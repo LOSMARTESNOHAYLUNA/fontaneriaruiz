@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontanería Ruiz — Leganés y alrededores</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0a1929;
+  --navy2:   #112236;
+  --water:   #0077b6;
+  --aqua:    #0096c7;
+  --splash:  #48cae4;
+  --red:     #c0392b;
+  --red2:    #a93226;
+  --fog:     #eef4f8;
+  --white:   #ffffff;
+  --ink:     #0d1b2a;
+  --muted:   #607d8b;
+  --bd-light: rgba(0,0,0,0.07);
+  --bd-dark:  rgba(255,255,255,0.09);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fog);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─ ICON COLOURS ─────────────────────────── */
+.c-aqua   { color: var(--aqua); }
+.c-splash { color: var(--splash); }
+.c-white  { color: var(--white); }
+.c-red    { color: var(--red); }
+.c-water  { color: var(--water); }
+
+/* ─ HEADER ─────────────────────────────────── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,25,41,0.97);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 66px;
+  border-bottom: 1px solid var(--bd-dark);
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 30px; height: 30px;
+  background: var(--water);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo span { color: var(--splash); }
+
+/* NAV LINKS */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+nav a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color .16s, background .16s;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.07);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+  50%      { box-shadow: 0 0 0 7px rgba(74,222,128,0.06); }
+}
+
+/* ─ BUTTONS ──────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all .17s ease;
+  line-height: 1;
+}
+
+.btn-lg { padding: 14px 30px; font-size: 15px; }
+
+.btn-red    { background: var(--red);   color: var(--white); }
+.btn-red:hover    { background: var(--red2); transform: translateY(-1px); }
+
+.btn-water  { background: var(--water); color: var(--white); }
+.btn-water:hover  { background: var(--aqua); transform: translateY(-1px); }
+
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+.btn-outline:hover { border-color: var(--splash); color: var(--splash); }
+
+.btn-white { background: var(--white); color: var(--red); }
+.btn-white:hover { background: var(--fog); transform: translateY(-1px); }
+
+.btn-ghost  { background: transparent; border: 2px solid rgba(255,255,255,0.4); color: var(--white); }
+.btn-ghost:hover  { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+/* ─ HERO ─────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  padding: 66px 5% 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 78% 55%, rgba(0,150,199,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 12% 28%, rgba(192,57,43,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(0,119,182,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-zone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0,150,199,0.13);
+  border: 1px solid rgba(0,150,199,0.3);
+  color: var(--splash);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(38px, 5.5vw, 66px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 22px;
+}
+
+.hero h1 em { font-style: italic; color: var(--splash); }
+
+.hero-sub {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.58);
+  max-width: 430px;
+  margin-bottom: 36px;
+}
+
+.hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.hero-stats {
+  display: flex; gap: 40px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 34px; font-weight: 900;
+  color: var(--white); line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stat-num b { color: var(--aqua); }
+.stat-label { font-size: 12.5px; color: rgba(255,255,255,0.38); }
+
+/* ─ HERO RIGHT ─────────────────────────────── */
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 14px;
+  padding-bottom: 40px;
+}
+
+.emergency-box {
+  background: var(--red);
+  border-radius: 16px;
+  padding: 28px 30px;
+  position: relative; overflow: hidden;
+}
+
+.emergency-box::after {
+  content: '';
+  position: absolute; right: -28px; top: -28px;
+  width: 130px; height: 130px; border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  pointer-events: none;
+}
+
+.em-tag {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+
+.em-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--white); margin-bottom: 14px; line-height: 1.25;
+}
+
+.em-phone {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 900;
+  color: var(--white); text-decoration: none;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+
+/* ─ TRUST GRID ─────────────────────────────── */
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.trust-item {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex; align-items: flex-start; gap: 12px;
+  transition: background .2s, border-color .2s;
+}
+
+.trust-item:hover {
+  background: rgba(0,150,199,0.15);
+  border-color: rgba(0,150,199,0.4);
+}
+
+.ti-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(72,202,228,0.22);
+  border: 1px solid rgba(72,202,228,0.35);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--splash);       /* icons inherit via currentColor */
+}
+
+.ti-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+/* ← CONTRASTE FIJO: era rgba(255,255,255,0.38) */
+.ti-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.45;
+}
+
+/* ─ SECTION COMMONS ───────────────────────── */
+.sec-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--water); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.sec-label::before {
+  content: '';
+  display: block; width: 22px; height: 2px;
+  background: var(--water); border-radius: 2px;
+}
+
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 46px); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--ink); margin-bottom: 14px;
+}
+
+.sec-sub {
+  font-size: 16px; color: var(--muted);
+  line-height: 1.7; max-width: 500px;
+}
+
+/* ─ SERVICES ──────────────────────────────── */
+.services { padding: 100px 5%; background: var(--fog); }
+.services-head { margin-bottom: 54px; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.svc-card {
+  background: var(--white);
+  border: 1px solid var(--bd-light);
+  border-radius: 14px; padding: 30px 28px;
+  transition: all .22s ease;
+  position: relative; overflow: hidden;
+}
+
+.svc-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--water), var(--aqua));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .25s ease;
+}
+
+.svc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,119,182,0.10);
+  border-color: rgba(0,150,199,0.2);
+}
+
+.svc-card:hover::before { transform: scaleX(1); }
+
+.svc-icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: rgba(0,119,182,0.09);
+  border: 1px solid rgba(0,119,182,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  color: var(--water);          /* currentColor for SVG */
+  transition: background .2s, border-color .2s;
+}
+
+.svc-card:hover .svc-icon {
+  background: rgba(0,119,182,0.16);
+  border-color: rgba(0,119,182,0.28);
+}
+
+.svc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 10px;
+}
+
+.svc-desc {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.7; margin-bottom: 20px;
+}
+
+.svc-link {
+  font-size: 13px; font-weight: 600; color: var(--water);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: gap .15s, color .15s;
+}
+
+.svc-card:hover .svc-link { gap: 9px; color: var(--aqua); }
+
+/* ─ ABOUT ─────────────────────────────────── */
+.about {
+  background: var(--navy2);
+  padding: 96px 5%;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.about .sec-label { color: var(--splash); }
+.about .sec-label::before { background: var(--splash); }
+.about .sec-title { color: var(--white); }
+.about .sec-sub   { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+
+.features { display: flex; flex-direction: column; gap: 18px; }
+
+.feat-item { display: flex; gap: 14px; align-items: flex-start; }
+
+.feat-check {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(72,202,228,0.2);
+  border: 1.5px solid rgba(72,202,228,0.5);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 3px;
+  color: var(--splash);
+}
+
+.feat-text { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.6; }
+.feat-text strong { color: var(--white); font-weight: 600; }
+
+.certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.cert {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 12px; padding: 24px 20px; text-align: center;
+  transition: border-color .2s, background .2s;
+}
+
+.cert:hover {
+  border-color: rgba(72,202,228,0.3);
+  background: rgba(72,202,228,0.06);
+}
+
+.cert-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(72,202,228,0.18);
+  border: 1px solid rgba(72,202,228,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--splash);
+}
+
+.cert-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 5px; }
+.cert-sub   { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+/* ─ TESTIMONIALS ──────────────────────────── */
+.testimonials { padding: 100px 5%; background: var(--fog); }
+.testi-head   { margin-bottom: 52px; }
+
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+}
+
+.testi-card {
+  background: var(--white);
+  border: 1px solid var(--bd-light);
+  border-radius: 14px; padding: 28px;
+  transition: box-shadow .2s;
+}
+
+.testi-card:hover { box-shadow: 0 12px 32px rgba(0,119,182,0.09); }
+
+.testi-stars {
+  display: flex; gap: 3px; margin-bottom: 14px;
+  color: #f5a623;
+}
+
+.testi-text {
+  font-size: 15px; line-height: 1.72;
+  color: #3d4f5c; margin-bottom: 20px; font-style: italic;
+}
+
+.testi-author { display: flex; align-items: center; gap: 10px; }
+
+.ta-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--water) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 13px;
+  font-weight: 700; color: var(--white); flex-shrink: 0;
+}
+
+.ta-name  { font-size: 14px; font-weight: 600; color: var(--ink); }
+.ta-where { font-size: 12px; color: var(--muted); }
+
+/* ─ CTA ───────────────────────────────────── */
+.cta-sec {
+  background: var(--red); padding: 80px 5%; text-align: center;
+  position: relative; overflow: hidden;
+}
+
+.cta-sec::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 130%, rgba(0,0,0,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-sec h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 50px); font-weight: 900;
+  letter-spacing: -0.03em; color: var(--white);
+  margin-bottom: 14px; position: relative;
+}
+
+.cta-sec p {
+  font-size: 17px; color: rgba(255,255,255,0.75);
+  margin-bottom: 36px; position: relative;
+}
+
+.cta-btns {
+  display: flex; gap: 14px; justify-content: center;
+  flex-wrap: wrap; position: relative;
+}
+
+/* ─ FOOTER ────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 36px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid var(--bd-dark);
+}
+
+.footer-logo {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+  color: var(--white); display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+}
+
+.footer-logo span { color: var(--aqua); }
+
+.footer-links { display: flex; gap: 28px; }
+
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.35);
+  text-decoration: none; transition: color .15s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+
+/* ─ REVEAL ────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+
+/* ─ RESPONSIVE ────────────────────────────── */
+@media (max-width: 1024px) {
+  nav { display: none; }
+}
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-bottom: 60px; gap: 36px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .live-badge { display: none; }
+}
+
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: 1fr; }
+  header .btn-red { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG DEFS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="3" rx="1"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/>
+  </symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+  </symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+  </symbol>
+  <symbol id="i-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4l2 2"/><path d="M4 20 20 4"/><path d="M2 13c0-2.8 1.6-5.2 4-6.3M12 2c2.8 0 5.2 1.6 6.3 4"/>
+    <circle cx="10" cy="18" r=".5" fill="currentColor"/><circle cx="14" cy="18" r=".5" fill="currentColor"/>
+    <circle cx="12" cy="21" r=".5" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+  </symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/>
+    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+    <path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <polyline points="9 12 11 14 15 10"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor">
+    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/>
+    <path d="M9 7h6M9 11h6M9 15h4"/>
+  </symbol>
+  <symbol id="i-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+  </symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </symbol>
+</svg>
+
+
+<!-- ═══ HEADER ═══════════════════════════════ -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg width="16" height="16" style="color:white"><use href="#i-pipe"/></svg>
+    </div>
+    Fontanería<span> Ruiz</span>
+  </a>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#zona">Zona de trabajo</a>
+    <a href="#nosotros">Quiénes somos</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="header-right">
+    <a href="tel:+34611223344" class="live-badge">
+      <span class="live-dot"></span>
+      611 22 33 44
+    </a>
+    <a href="#contacto" class="btn btn-red">Presupuesto gratis</a>
+  </div>
+</header>
+
+
+<!-- ═══ HERO ══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-zone">
+      <svg width="13" height="13" style="color:var(--splash)"><use href="#i-pin"/></svg>
+      Leganés · Alcorcón · Getafe · Móstoles
+    </div>
+
+    <h1>Tu fontanero<br>de confianza<br><em>desde 1997.</em></h1>
+
+    <p class="hero-sub">
+      Averías, instalaciones, calefacción y urgencias. Presupuesto sin compromiso en menos de dos horas. Más de 25 años cuidando hogares en el sur de Madrid.
+    </p>
+
+    <div class="hero-btns">
+      <a href="tel:+34611223344" class="btn btn-red btn-lg">
+        <svg width="16" height="16" style="color:white"><use href="#i-phone"/></svg>
+        Llamar ahora
+      </a>
+      <a href="#servicios" class="btn btn-outline btn-lg">Ver servicios</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">25<b>+</b></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">2.400<b>+</b></div>
+        <div class="stat-label">Clientes atendidos</div>
+      </div>
+      <div>
+        <div class="stat-num">4,9<b>★</b></div>
+        <div class="stat-label">Valoración en Google</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="emergency-box">
+      <div class="em-tag">
+        <svg width="13" height="13" style="color:rgba(255,255,255,0.8)"><use href="#i-lightning"/></svg>
+        Urgencias 24 horas
+      </div>
+      <div class="em-title">Goteras, roturas y averías sin aviso</div>
+      <a href="tel:+34611223344" class="em-phone">
+        <svg width="22" height="22" style="color:white"><use href="#i-phone"/></svg>
+        611 22 33 44
+      </a>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="ti-icon">
+          <svg width="19" height="19" style="color:var(--splash)"><use href="#i-receipt"/></svg>
+        </div>
+        <div>
+          <div class="ti-title">Presupuesto gratis</div>
+          <div class="ti-sub">Sin compromiso, en el mismo día</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="ti-icon">
+          <svg width="19" height="19" style="color:var(--splash)"><use href="#i-shield"/></svg>
+        </div>
+        <div>
+          <div class="ti-title">Garantía 2 años</div>
+          <div class="ti-sub">Materiales y mano de obra</div>
+        </div>
+      </div>
+
+      <div class="trust-item" id="zona">
+        <div class="ti-icon">
+          <svg width="19" height="19" style="color:var(--splash)"><use href="#i-pin"/></svg>
+        </div>
+        <div>
+          <div class="ti-title">Sur de Madrid</div>
+          <div class="ti-sub">Llegamos en menos de 60 min</div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="ti-icon">
+          <svg width="19" height="19" style="color:var(--splash)"><use href="#i-receipt"/></svg>
+        </div>
+        <div>
+          <div class="ti-title">Factura oficial</div>
+          <div class="ti-sub">Empresa registrada, IVA incluido</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SERVICES ══════════════════════════════ -->
+<section class="services" id="servicios">
+  <div class="services-head reveal">
+    <div class="sec-label">Lo que hacemos</div>
+    <h2 class="sec-title">Servicios de fontanería<br>y calefacción</h2>
+    <p class="sec-sub">De la avería más urgente a la reforma más completa. Trabajamos con todas las marcas y garantizamos cada trabajo por escrito.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc-card reveal d1">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-drop"/></svg></div>
+      <div class="svc-title">Averías y urgencias</div>
+      <p class="svc-desc">Goteras, tuberías reventadas, bajantes obstruidas. Atención inmediata 24 horas, también fines de semana y festivos.</p>
+      <a href="tel:+34611223344" class="svc-link">Llamar ahora <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-card reveal d2">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-flame"/></svg></div>
+      <div class="svc-title">Calefacción y ACS</div>
+      <p class="svc-desc">Instalación, mantenimiento y reparación de calderas, radiadores y suelo radiante. Junkers, Baxi, Roca, Vaillant.</p>
+      <a href="#contacto" class="svc-link">Pedir presupuesto <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-card reveal d3">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-shower"/></svg></div>
+      <div class="svc-title">Cuartos de baño</div>
+      <p class="svc-desc">Reforma integral o parcial: platos de ducha, bañeras, sanitarios, griferías. Gestión completa con alicatador.</p>
+      <a href="#contacto" class="svc-link">Pedir presupuesto <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-card reveal d1">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-tool"/></svg></div>
+      <div class="svc-title">Instalaciones nuevas</div>
+      <p class="svc-desc">Obra nueva y reformas integrales. Proyecto, instalación y legalización de instalaciones en viviendas y locales.</p>
+      <a href="#contacto" class="svc-link">Consultar <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-card reveal d2">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-sun"/></svg></div>
+      <div class="svc-title">Energía solar ACS</div>
+      <p class="svc-desc">Instalación de placas solares térmicas. Ahorra hasta un 70 % en tu factura de agua caliente. Ayudas disponibles.</p>
+      <a href="#contacto" class="svc-link">Saber más <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-card reveal d3">
+      <div class="svc-icon"><svg width="22" height="22"><use href="#i-building"/></svg></div>
+      <div class="svc-title">Comunidades y locales</div>
+      <p class="svc-desc">Mantenimiento periódico para comunidades de vecinos, oficinas y locales. Contrato anual con precio cerrado.</p>
+      <a href="#contacto" class="svc-link">Solicitar contrato <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ABOUT ══════════════════════════════════ -->
+<section class="about" id="nosotros">
+  <div class="about-content reveal">
+    <div class="sec-label">Quiénes somos</div>
+    <h2 class="sec-title">Familia Ruiz.<br>Tres generaciones<br>de oficio.</h2>
+    <p class="sec-sub">Lo que empezó Carlos Ruiz en 1997 en su taller de Leganés lo siguen hoy sus hijos con los mismos valores: trabajo bien hecho, precio justo y cara visible.</p>
+
+    <div class="features">
+      <div class="feat-item">
+        <div class="feat-check"><svg width="12" height="12" style="color:var(--splash)"><use href="#i-check"/></svg></div>
+        <p class="feat-text"><strong>Sabemos lo que cuesta una mala reparación.</strong> Por eso lo hacemos bien desde la primera vez y lo garantizamos dos años.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check"><svg width="12" height="12" style="color:var(--splash)"><use href="#i-check"/></svg></div>
+        <p class="feat-text"><strong>Sin sorpresas en la factura.</strong> El presupuesto se firma antes de empezar. Si surge algo, te avisamos antes de actuar.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check"><svg width="12" height="12" style="color:var(--splash)"><use href="#i-check"/></svg></div>
+        <p class="feat-text"><strong>Llegamos donde otros no llegan.</strong> Leganés, Getafe, Alcorcón, Fuenlabrada y Móstoles en menos de una hora.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check"><svg width="12" height="12" style="color:var(--splash)"><use href="#i-check"/></svg></div>
+        <p class="feat-text"><strong>Empresa registrada.</strong> Instaladores habilitados, seguro de responsabilidad civil y factura oficial siempre.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="certs-grid reveal">
+    <div class="cert">
+      <div class="cert-icon"><svg width="22" height="22" style="color:var(--splash)"><use href="#i-shield"/></svg></div>
+      <div class="cert-title">Instalador habilitado</div>
+      <div class="cert-sub">Certificado por la Comunidad de Madrid — Reg. IH-28456</div>
+    </div>
+    <div class="cert">
+      <div class="cert-icon"><svg width="22" height="22" style="color:var(--splash)"><use href="#i-receipt"/></svg></div>
+      <div class="cert-title">Seguro RC</div>
+      <div class="cert-sub">Responsabilidad civil hasta 600.000 €</div>
+    </div>
+    <div class="cert">
+      <div class="cert-icon" style="color:#f5a623"><svg width="22" height="22"><use href="#i-star"/></svg></div>
+      <div class="cert-title">4,9 en Google</div>
+      <div class="cert-sub">Más de 340 valoraciones reales de vecinos</div>
+    </div>
+    <div class="cert">
+      <div class="cert-icon"><svg width="22" height="22" style="color:var(--splash)"><use href="#i-check"/></svg></div>
+      <div class="cert-title">Garantía escrita</div>
+      <div class="cert-sub">Materiales y mano de obra — 24 meses</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TESTIMONIALS ══════════════════════════ -->
+<section class="testimonials" id="opiniones">
+  <div class="testi-head reveal">
+    <div class="sec-label">Lo que dicen los vecinos</div>
+    <h2 class="sec-title">340 opiniones en Google.<br>Todas reales.</h2>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal d1">
+      <div class="testi-stars">
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg>
+      </div>
+      <p class="testi-text">"Llamé a las 11 de la noche por una fuga en la cocina. A la hora tenía a los chicos de Ruiz aquí. Repararon todo, limpiaron y me cobraron exactamente lo que dijeron."</p>
+      <div class="testi-author">
+        <div class="ta-avatar">MG</div>
+        <div><div class="ta-name">María G.</div><div class="ta-where">Leganés Centro</div></div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal d2">
+      <div class="testi-stars">
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg>
+      </div>
+      <p class="testi-text">"Llevaba meses con la caldera dando problemas. Dos empresas antes no lo arreglaron. Estos tardaron media hora. Precio muy razonable y me explicaron todo."</p>
+      <div class="testi-author">
+        <div class="ta-avatar">JL</div>
+        <div><div class="ta-name">José Luis T.</div><div class="ta-where">Getafe Norte</div></div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal d3">
+      <div class="testi-stars">
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg><svg width="15" height="15"><use href="#i-star"/></svg>
+        <svg width="15" height="15"><use href="#i-star"/></svg>
+      </div>
+      <p class="testi-text">"Reforma del baño completa en cuatro días. Coordinaron todo: fontanería, alicatado, sanitarios. El resultado es espectacular. Los recomiendo sin dudarlo."</p>
+      <div class="testi-author">
+        <div class="ta-avatar">AC</div>
+        <div><div class="ta-name">Ana C.</div><div class="ta-where">Alcorcón</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ════════════════════════════════════ -->
+<section class="cta-sec" id="contacto">
+  <h2>¿Tienes una avería<br>o necesitas presupuesto?</h2>
+  <p>Llámanos o escríbenos. Respondemos siempre en menos de dos horas.</p>
+  <div class="cta-btns">
+    <a href="tel:+34611223344" class="btn btn-white btn-lg">
+      <svg width="16" height="16" style="color:var(--red)"><use href="#i-phone"/></svg>
+      611 22 33 44
+    </a>
+    <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank">
+      <svg width="16" height="16" style="color:white"><use href="#i-whatsapp"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ══════════════════════════════════ -->
+<footer>
+  <a href="#" class="footer-logo">
+    <svg width="16" height="16" style="color:var(--aqua); opacity:.7"><use href="#i-pipe"/></svg>
+    Fontanería<span> Ruiz</span>
+  </a>
+  <div class="footer-links">
+    <a href="#">Aviso legal</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Cookies</a>
+  </div>
+  <div class="footer-copy">© 2025 Fontanería Ruiz · Leganés, Madrid</div>
+</footer>
+
+
+<script>
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
