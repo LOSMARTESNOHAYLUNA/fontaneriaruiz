@@ -629,6 +629,234 @@ footer {
   .certs-grid { grid-template-columns: 1fr; }
   header .btn-red { display: none; }
 }
+
+/* ─ PROCESS ──────────────────────────────── */
+.process {
+  padding: 100px 5%;
+  background: var(--navy);
+  position: relative; overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 10% 50%, rgba(0,150,199,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 90% 50%, rgba(192,57,43,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.process-head {
+  text-align: center; margin-bottom: 72px;
+}
+
+.process-head .sec-label {
+  justify-content: center; color: var(--splash);
+}
+
+.process-head .sec-label::before { background: var(--splash); }
+.process-head .sec-title { color: var(--white); }
+.process-head .sec-sub { color: rgba(255,255,255,0.45); margin: 0 auto; }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 31px;
+  left: calc(16.67% + 28px);
+  right: calc(16.67% + 28px);
+  height: 1px;
+  border-top: 1px dashed rgba(0,150,199,0.3);
+}
+
+.process-step { text-align: center; padding: 0 28px; }
+
+.step-num {
+  width: 62px; height: 62px; border-radius: 50%;
+  background: rgba(0,119,182,0.14);
+  border: 1.5px solid rgba(0,150,199,0.32);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 900; color: var(--aqua);
+  position: relative; z-index: 1;
+  transition: all .25s ease;
+}
+
+.process-step:hover .step-num {
+  background: rgba(0,150,199,0.22);
+  border-color: var(--aqua);
+  box-shadow: 0 0 28px rgba(0,150,199,0.22);
+}
+
+.step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--white);
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 14px; color: rgba(255,255,255,0.44); line-height: 1.72;
+}
+
+/* ─ CONTACT SECTION ──────────────────────── */
+.contact-sec {
+  padding: 100px 5%; background: var(--fog);
+}
+
+.contact-head { margin-bottom: 52px; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+
+.contact-form-card {
+  background: var(--white);
+  border: 1px solid var(--bd-light);
+  border-radius: 20px; padding: 40px;
+}
+
+.form-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px;
+}
+
+.form-sub { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block; font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; background: var(--fog);
+  border: 1.5px solid var(--bd-light);
+  border-radius: 8px; padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; color: var(--ink);
+  outline: none; transition: border-color .18s, background .18s;
+  appearance: none; -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--water); background: var(--white);
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23607d8b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px; cursor: pointer;
+}
+
+.form-group textarea { resize: none; height: 104px; }
+
+.form-check { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 22px; }
+
+.form-check input[type="checkbox"] {
+  width: 16px; height: 16px;
+  accent-color: var(--water); flex-shrink: 0; margin-top: 2px;
+  cursor: pointer;
+}
+
+.form-check label { font-size: 12.5px; color: var(--muted); line-height: 1.55; cursor: pointer; }
+
+.form-check a { color: var(--water); }
+
+.form-submit { width: 100%; justify-content: center; }
+
+/* Success state */
+.form-success {
+  display: none; text-align: center; padding: 40px 20px;
+}
+
+.success-ring {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(0,150,199,0.1);
+  border: 1.5px solid rgba(0,150,199,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px; color: var(--water);
+}
+
+.form-success h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 21px; font-weight: 700;
+  color: var(--ink); margin-bottom: 10px;
+}
+
+.form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* Map side */
+.contact-map-side { display: flex; flex-direction: column; gap: 20px; }
+
+.map-wrap {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--bd-light); height: 300px;
+  position: relative;
+}
+
+.map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.contact-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--bd-light);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none; color: inherit;
+  transition: all .2s ease;
+}
+
+.contact-card:hover {
+  border-color: rgba(0,119,182,0.22);
+  box-shadow: 0 8px 26px rgba(0,119,182,0.08);
+  transform: translateY(-2px);
+}
+
+.cc-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+.cc-icon.red   { background: rgba(192,57,43,0.09); color: var(--red); }
+.cc-icon.green { background: rgba(37,211,102,0.1); color: #25d366; }
+.cc-icon.blue  { background: rgba(0,119,182,0.09); color: var(--water); }
+
+.cc-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.cc-value { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+.cc-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─ RESPONSIVE ADDITIONS ─────────────────── */
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; gap: 36px; }
+  .process-steps::before { display: none; }
+}
+
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-card { padding: 28px 22px; }
+}
 </style>
 </head>
 <body>
@@ -975,19 +1203,157 @@ footer {
 </section>
 
 
-<!-- ═══ CTA ════════════════════════════════════ -->
-<section class="cta-sec" id="contacto">
-  <h2>¿Tienes una avería<br>o necesitas presupuesto?</h2>
-  <p>Llámanos o escríbenos. Respondemos siempre en menos de dos horas.</p>
-  <div class="cta-btns">
-    <a href="tel:+34611223344" class="btn btn-white btn-lg">
-      <svg width="16" height="16" style="color:var(--red)"><use href="#i-phone"/></svg>
-      611 22 33 44
-    </a>
-    <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank">
-      <svg width="16" height="16" style="color:white"><use href="#i-whatsapp"/></svg>
-      WhatsApp
-    </a>
+<!-- ═══ PROCESS ═══════════════════════════════ -->
+<section class="process">
+  <div class="process-head reveal">
+    <div class="sec-label">Cómo trabajamos</div>
+    <h2 class="sec-title">Sin sorpresas.<br>Así funciona Fontanería Ruiz.</h2>
+    <p class="sec-sub">Un proceso claro de principio a fin. Sabemos lo que vale tu tranquilidad.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step reveal d1">
+      <div class="step-num">1</div>
+      <div class="step-title">Contacto inmediato</div>
+      <p class="step-desc">Llámanos, escríbenos por WhatsApp o rellena el formulario. Respondemos en menos de dos horas, siempre.</p>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="step-num">2</div>
+      <div class="step-title">Visita y diagnóstico</div>
+      <p class="step-desc">Un técnico va a tu domicilio, evalúa la avería sin coste y te explica exactamente qué hay que hacer y por qué.</p>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="step-num">3</div>
+      <div class="step-title">Presupuesto firmado</div>
+      <p class="step-desc">Apruebas el precio por escrito antes de empezar. Sin extras. Sin sorpresas. Con garantía de dos años incluida.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CONTACT + MAP ════════════════════════ -->
+<section class="contact-sec" id="contacto">
+  <div class="contact-head reveal">
+    <div class="sec-label">Contacto</div>
+    <h2 class="sec-title">Cuéntanos qué necesitas</h2>
+    <p class="sec-sub">Rellena el formulario y te llamamos en menos de dos horas. Sin compromiso.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- FORM CARD -->
+    <div class="contact-form-card reveal d1">
+
+      <div id="formContent">
+        <h3 class="form-title">Solicitar presupuesto</h3>
+        <p class="form-sub">Gratuito, sin compromiso. Respondemos siempre.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Nombre</label>
+              <input type="text" id="fname" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Teléfono</label>
+              <input type="tel" id="fphone" name="telefono" placeholder="611 22 33 44" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="email" placeholder="tuemail@ejemplo.com">
+          </div>
+
+          <div class="form-group">
+            <label for="fservice">Tipo de servicio</label>
+            <select id="fservice" name="servicio" required>
+              <option value="" disabled selected>¿Qué necesitas?</option>
+              <option value="urgencia">Avería urgente</option>
+              <option value="calefaccion">Calefacción o ACS</option>
+              <option value="bano">Reforma de baño</option>
+              <option value="instalacion">Instalación nueva</option>
+              <option value="solar">Energía solar</option>
+              <option value="comunidad">Comunidad o local</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fmsg">Descripción breve</label>
+            <textarea id="fmsg" name="mensaje" placeholder="Cuéntanos qué ha pasado o qué necesitas hacer…"></textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="fterms" required>
+            <label for="fterms">He leído y acepto la <a href="#">política de privacidad</a>. Tus datos solo se usarán para gestionar tu solicitud.</label>
+          </div>
+
+          <button type="submit" class="btn btn-red btn-lg form-submit" id="formBtn">
+            <svg width="16" height="16" style="color:white"><use href="#i-arrow"/></svg>
+            Solicitar presupuesto gratuito
+          </button>
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-ring">
+          <svg width="26" height="26"><use href="#i-check"/></svg>
+        </div>
+        <h3>¡Mensaje recibido!</h3>
+        <p>Te llamamos en menos de dos horas.<br>Si es urgente, llama directamente al <strong>611 22 33 44</strong>.</p>
+      </div>
+
+    </div>
+
+    <!-- MAP + CONTACT CARDS -->
+    <div class="contact-map-side reveal d2">
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8600%2C40.2900%2C-3.7200%2C40.3750&amp;layer=mapnik&amp;marker=40.3283%2C-3.7938"
+          loading="lazy"
+          title="Zona de servicio — Leganés y sur de Madrid"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="contact-cards">
+        <a href="tel:+34611223344" class="contact-card">
+          <div class="cc-icon red">
+            <svg width="20" height="20"><use href="#i-phone"/></svg>
+          </div>
+          <div>
+            <div class="cc-label">Llamar ahora</div>
+            <div class="cc-value">611 22 33 44</div>
+            <div class="cc-sub">Urgencias 24 h · También fines de semana</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/34611223344" class="contact-card" target="_blank" rel="noopener">
+          <div class="cc-icon green">
+            <svg width="20" height="20"><use href="#i-whatsapp"/></svg>
+          </div>
+          <div>
+            <div class="cc-label">WhatsApp</div>
+            <div class="cc-value">Escribir mensaje</div>
+            <div class="cc-sub">Respuesta rápida · Puedes enviar fotos de la avería</div>
+          </div>
+        </a>
+
+        <div class="contact-card" style="cursor:default;">
+          <div class="cc-icon blue">
+            <svg width="20" height="20"><use href="#i-pin"/></svg>
+          </div>
+          <div>
+            <div class="cc-label">Zona de servicio</div>
+            <div class="cc-value">Sur de Madrid</div>
+            <div class="cc-sub">Leganés · Getafe · Alcorcón · Fuenlabrada · Móstoles</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1008,11 +1374,50 @@ footer {
 
 
 <script>
+/* ─ Reveal on scroll ─ */
 const obs = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
   { threshold: 0.1 }
 );
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ─ Contact form ─ */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('formBtn');
+  const nombre   = document.getElementById('fname').value.trim();
+  const telefono = document.getElementById('fphone').value.trim();
+  const servicio = document.getElementById('fservice').value;
+  const terms    = document.getElementById('fterms').checked;
+
+  if (!nombre || !telefono || !servicio || !terms) {
+    /* Simple highlight for empty required fields */
+    [document.getElementById('fname'), document.getElementById('fphone'), document.getElementById('fservice')].forEach(f => {
+      if (!f.value.trim()) {
+        f.style.borderColor = 'var(--red)';
+        f.addEventListener('input', () => f.style.borderColor = '', { once: true });
+      }
+    });
+    if (!terms) {
+      document.getElementById('fterms').style.outline = '2px solid var(--red)';
+      setTimeout(() => document.getElementById('fterms').style.outline = '', 1800);
+    }
+    return;
+  }
+
+  /* Simulate sending */
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  setTimeout(() => {
+    document.getElementById('formContent').style.display = 'none';
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    success.style.animation = 'fadeUp .4s ease both';
+  }, 1100);
+});
 </script>
 </body>
 </html>
