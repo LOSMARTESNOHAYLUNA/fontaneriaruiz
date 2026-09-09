@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Fontanería Ruiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0a1929;
+  --navy2:   #112236;
+  --water:   #0077b6;
+  --aqua:    #0096c7;
+  --splash:  #48cae4;
+  --red:     #c0392b;
+  --red2:    #a93226;
+  --fog:     #eef4f8;
+  --white:   #ffffff;
+  --ink:     #0d1b2a;
+  --muted:   #607d8b;
+  --bd-light: rgba(0,0,0,0.07);
+  --bd-dark:  rgba(255,255,255,0.09);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--ink); overflow-x: hidden; }
+
+/* ─ HEADER ─ */
+header {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(10,25,41,0.97); backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 66px;
+  border-bottom: 1px solid var(--bd-dark); gap: 20px;
+}
+.logo {
+  font-family: 'Fraunces', serif; font-size: 19px; font-weight: 700;
+  color: var(--white); letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none; flex-shrink: 0;
+}
+.logo-mark {
+  width: 30px; height: 30px; background: var(--water); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo span { color: var(--splash); }
+nav { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+nav a {
+  font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.55);
+  text-decoration: none; padding: 6px 14px; border-radius: 6px;
+  transition: color .16s, background .16s; white-space: nowrap;
+}
+nav a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+nav a.active { color: var(--splash); }
+.header-right { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.live-badge {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65);
+  text-decoration: none; white-space: nowrap;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.2); flex-shrink: 0; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+  50%      { box-shadow: 0 0 0 7px rgba(74,222,128,0.06); }
+}
+
+/* ─ BUTTONS ─ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  padding: 10px 20px; border-radius: 6px; text-decoration: none; border: none;
+  cursor: pointer; transition: all .17s ease; line-height: 1;
+}
+.btn-lg { padding: 14px 30px; font-size: 15px; }
+.btn-red   { background: var(--red);   color: var(--white); }
+.btn-red:hover   { background: var(--red2); transform: translateY(-1px); }
+.btn-water { background: var(--water); color: var(--white); }
+.btn-water:hover { background: var(--aqua); transform: translateY(-1px); }
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+.btn-outline:hover { border-color: var(--splash); color: var(--splash); }
+.btn-ghost  { background: transparent; border: 2px solid rgba(255,255,255,0.4); color: var(--white); }
+.btn-ghost:hover  { border-color: var(--white); background: rgba(255,255,255,0.08); }
+.btn-white { background: var(--white); color: var(--red); }
+.btn-white:hover { background: var(--fog); transform: translateY(-1px); }
+
+/* ─ SECTION COMMONS ─ */
+.sec-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--water); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-label::before { content: ''; display: block; width: 22px; height: 2px; background: var(--water); border-radius: 2px; }
+.sec-title {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 14px;
+}
+.sec-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 500px; }
+
+/* ─ REVEAL ─ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+
+/* ─ FOOTER ─ */
+footer {
+  background: var(--navy); padding: 36px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--bd-dark);
+}
+.footer-logo {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+  color: var(--white); display: flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.footer-logo span { color: var(--aqua); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+
+/* ─ FORM ─ */
+.form-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+.form-sub { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; background: var(--fog); border: 1.5px solid var(--bd-light);
+  border-radius: 8px; padding: 12px 14px; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; color: var(--ink); outline: none; transition: border-color .18s, background .18s;
+  appearance: none; -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--water); background: var(--white); }
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23607d8b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; cursor: pointer;
+}
+.form-group textarea { resize: none; height: 104px; }
+.form-check { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 22px; }
+.form-check input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--water); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.form-check label { font-size: 12.5px; color: var(--muted); line-height: 1.55; cursor: pointer; }
+.form-check a { color: var(--water); }
+.form-submit { width: 100%; justify-content: center; }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.success-ring {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(0,150,199,0.1); border: 1.5px solid rgba(0,150,199,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px; color: var(--water);
+}
+.form-success h3 { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ─ CONTACT CARDS ─ */
+.contact-card {
+  background: var(--white); border: 1px solid var(--bd-light);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none; color: inherit; transition: all .2s ease;
+}
+.contact-card:hover { border-color: rgba(0,119,182,0.22); box-shadow: 0 8px 26px rgba(0,119,182,0.08); transform: translateY(-2px); }
+.cc-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cc-icon.red   { background: rgba(192,57,43,0.09);  color: var(--red); }
+.cc-icon.green { background: rgba(37,211,102,0.1);  color: #25d366; }
+.cc-icon.blue  { background: rgba(0,119,182,0.09);  color: var(--water); }
+.cc-icon.navy  { background: rgba(10,25,41,0.07);   color: var(--navy); }
+.cc-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.cc-value { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+.cc-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ═══ PAGE HERO ═══ */
+.page-hero {
+  background: var(--navy); padding: 130px 5% 80px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 60%, rgba(0,150,199,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 5% 50%, rgba(192,57,43,0.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none;
+}
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,0.4); margin-bottom: 28px; position: relative; }
+.breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.breadcrumb a:hover { color: var(--splash); }
+.breadcrumb span { color: var(--splash); }
+.page-hero-content { position: relative; max-width: 700px; }
+.page-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 900; line-height: 1.06; letter-spacing: -0.03em; color: var(--white); margin-bottom: 18px; }
+.page-hero h1 em { font-style: italic; color: var(--splash); }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; }
+
+/* ═══ CONTACT MAIN ═══ */
+.contact-main {
+  padding: 80px 5%; background: var(--fog);
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+}
+.contact-form-card {
+  background: var(--white); border: 1px solid var(--bd-light);
+  border-radius: 20px; padding: 40px;
+}
+.contact-map-side { display: flex; flex-direction: column; gap: 16px; }
+.map-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--bd-light); height: 260px; }
+.map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+.contact-cards { display: flex; flex-direction: column; gap: 12px; }
+
+/* ═══ HOURS SECTION ═══ */
+.hours-section {
+  padding: 80px 5%; background: var(--white);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+.hours-card {
+  background: var(--navy2); border-radius: 20px; padding: 40px;
+  border: 1px solid var(--bd-dark);
+}
+.hours-title {
+  font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700;
+  color: var(--white); margin-bottom: 28px; letter-spacing: -0.02em;
+}
+.hours-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.hours-row:last-of-type { border-bottom: none; }
+.hours-day { font-size: 14px; color: rgba(255,255,255,0.6); }
+.hours-time { font-size: 14px; font-weight: 600; color: var(--white); }
+.hours-time.always {
+  color: var(--splash);
+  display: flex; align-items: center; gap: 6px;
+}
+.always-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--splash); animation: pulse 2s infinite; }
+.hours-note {
+  margin-top: 20px; padding: 14px 16px;
+  background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3);
+  border-radius: 10px;
+}
+.hours-note p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.55; }
+.hours-note strong { color: white; }
+
+/* ═══ FAQ ═══ */
+.faq-block .sec-label { color: var(--water); }
+.faq-block .sec-label::before { background: var(--water); }
+.faq-block .sec-title { font-size: clamp(24px,3vw,36px); }
+.faq-list { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+
+.faq-item {
+  background: var(--fog); border: 1px solid var(--bd-light);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item.open { border-color: rgba(0,119,182,0.2); }
+
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; text-align: left; gap: 12px;
+}
+.faq-q-text { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0,119,182,0.08); border: 1px solid rgba(0,119,182,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--water); transition: transform .25s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(0,119,182,0.16); }
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease, padding .3s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner {
+  padding: 0 22px 20px;
+  font-size: 14px; color: var(--muted); line-height: 1.72;
+}
+
+/* ═══ TRUST STRIP ═══ */
+.trust-strip {
+  background: var(--navy); padding: 48px 5%;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; align-items: center;
+}
+.ts-item { text-align: center; }
+.ts-num {
+  font-family: 'Fraunces', serif; font-size: 36px; font-weight: 900;
+  color: var(--white); letter-spacing: -0.03em; line-height: 1;
+}
+.ts-num b { color: var(--aqua); }
+.ts-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+
+/* ─ RESPONSIVE ─ */
+@media (max-width: 1024px) { nav { display: none; } }
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .hours-section { grid-template-columns: 1fr; gap: 40px; }
+  .trust-strip { grid-template-columns: repeat(2,1fr); }
+  .live-badge { display: none; }
+}
+@media (max-width: 540px) {
+  header .btn-red { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-card { padding: 28px 22px; }
+  .trust-strip { grid-template-columns: repeat(2,1fr); }
+  .page-hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG DEFS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="3" rx="1"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+</svg>
+
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="16" height="16" style="color:white"><use href="#i-pipe"/></svg>
+    </div>
+    Fontanería<span> Ruiz</span>
+  </a>
+  <nav>
+    <a href="servicios.html">Servicios</a>
+    <a href="index.html#zona">Zona de trabajo</a>
+    <a href="index.html#nosotros">Quiénes somos</a>
+    <a href="index.html#opiniones">Opiniones</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+  <div class="header-right">
+    <a href="tel:+34611223344" class="live-badge">
+      <span class="live-dot"></span>611 22 33 44
+    </a>
+    <a href="#form" class="btn btn-red">Presupuesto gratis</a>
+  </div>
+</header>
+
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content reveal">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 4 15 10 9 16" stroke-linecap="round"/></svg>
+      <span>Contacto</span>
+    </div>
+    <h1>Cuéntanos<br><em>qué necesitas.</em></h1>
+    <p>Rellena el formulario y te llamamos en menos de dos horas. Si es urgente, llama directamente. Respondemos siempre.</p>
+  </div>
+</section>
+
+
+<!-- ═══ TRUST STRIP ═══ -->
+<div class="trust-strip">
+  <div class="ts-item">
+    <div class="ts-num">25<b>+</b></div>
+    <div class="ts-label">Años de experiencia</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-num">2.400<b>+</b></div>
+    <div class="ts-label">Clientes atendidos</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-num">4,9<b>★</b></div>
+    <div class="ts-label">Valoración en Google</div>
+  </div>
+  <div class="ts-item">
+    <div class="ts-num">&lt; 2<b>h</b></div>
+    <div class="ts-label">Tiempo de respuesta</div>
+  </div>
+</div>
+
+
+<!-- ═══ CONTACT MAIN ═══ -->
+<section class="contact-main" id="form">
+  <div class="contact-grid">
+
+    <!-- FORMULARIO -->
+    <div class="contact-form-card reveal d1">
+      <div id="formContent">
+        <h3 class="form-title">Solicitar presupuesto</h3>
+        <p class="form-sub">Gratuito y sin compromiso. Te llamamos en menos de dos horas en horario de oficina; si es urgente, llama directamente.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Nombre</label>
+              <input type="text" id="fname" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Teléfono</label>
+              <input type="tel" id="fphone" name="telefono" placeholder="611 22 33 44" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="email" placeholder="tuemail@ejemplo.com">
+          </div>
+
+          <div class="form-group">
+            <label for="fservice">Tipo de servicio</label>
+            <select id="fservice" name="servicio" required>
+              <option value="" disabled selected>¿Qué necesitas?</option>
+              <option value="urgencia">Avería urgente</option>
+              <option value="calefaccion">Calefacción o ACS</option>
+              <option value="bano">Reforma de baño</option>
+              <option value="instalacion">Instalación nueva</option>
+              <option value="solar">Energía solar térmica</option>
+              <option value="comunidad">Comunidad o local</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fzone">Municipio</label>
+            <select id="fzone" name="municipio">
+              <option value="" disabled selected>¿Dónde estás?</option>
+              <option>Leganés</option>
+              <option>Getafe</option>
+              <option>Alcorcón</option>
+              <option>Fuenlabrada</option>
+              <option>Móstoles</option>
+              <option>Otro municipio del sur de Madrid</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fmsg">Descripción breve</label>
+            <textarea id="fmsg" name="mensaje" placeholder="Cuéntanos qué ha pasado o qué necesitas hacer…"></textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="fterms" required>
+            <label for="fterms">He leído y acepto la <a href="#">política de privacidad</a>. Tus datos solo se usarán para gestionar tu solicitud.</label>
+          </div>
+
+          <button type="submit" class="btn btn-red btn-lg form-submit" id="formBtn">
+            <svg width="16" height="16" style="color:white"><use href="#i-arrow"/></svg>
+            Solicitar presupuesto gratuito
+          </button>
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-ring">
+          <svg width="26" height="26"><use href="#i-check"/></svg>
+        </div>
+        <h3>¡Mensaje recibido!</h3>
+        <p>Te llamamos en menos de dos horas en horario de oficina.<br>Si es urgente, llama directamente al <strong>611 22 33 44</strong>.</p>
+      </div>
+    </div>
+
+    <!-- MAPA + TARJETAS -->
+    <div class="contact-map-side reveal d2">
+      <div class="map-wrap">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8600%2C40.2900%2C-3.7200%2C40.3750&layer=mapnik&marker=40.3283%2C-3.7938"
+          loading="lazy" title="Zona de servicio — Sur de Madrid" allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="contact-cards">
+        <a href="tel:+34611223344" class="contact-card">
+          <div class="cc-icon red"><svg width="20" height="20"><use href="#i-phone"/></svg></div>
+          <div>
+            <div class="cc-label">Llamar ahora</div>
+            <div class="cc-value">611 22 33 44</div>
+            <div class="cc-sub">Urgencias 24 h · También fines de semana y festivos</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/34611223344" class="contact-card" target="_blank" rel="noopener">
+          <div class="cc-icon green"><svg width="20" height="20"><use href="#i-whatsapp"/></svg></div>
+          <div>
+            <div class="cc-label">WhatsApp</div>
+            <div class="cc-value">Escribir mensaje</div>
+            <div class="cc-sub">Respuesta rápida · Puedes enviar fotos de la avería</div>
+          </div>
+        </a>
+
+        <div class="contact-card" style="cursor:default;">
+          <div class="cc-icon blue"><svg width="20" height="20"><use href="#i-pin"/></svg></div>
+          <div>
+            <div class="cc-label">Zona de servicio</div>
+            <div class="cc-value">Sur de Madrid</div>
+            <div class="cc-sub">Leganés · Getafe · Alcorcón · Fuenlabrada · Móstoles</div>
+          </div>
+        </div>
+
+        <div class="contact-card" style="cursor:default;">
+          <div class="cc-icon navy"><svg width="20" height="20"><use href="#i-clock"/></svg></div>
+          <div>
+            <div class="cc-label">Horario de oficina</div>
+            <div class="cc-value">L–V: 8:00–19:00</div>
+            <div class="cc-sub">Urgencias 24 h · Sáb y festivos también</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ HORARIOS + FAQ ═══ -->
+<section class="hours-section">
+
+  <!-- HORARIOS -->
+  <div class="reveal d1">
+    <div class="hours-card">
+      <div class="hours-title">Horarios de atención</div>
+      <div class="hours-row">
+        <span class="hours-day">Lunes — Viernes</span>
+        <span class="hours-time">08:00 — 19:00</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Sábado</span>
+        <span class="hours-time">09:00 — 14:00</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Domingo y festivos</span>
+        <span class="hours-time" style="color:rgba(255,255,255,0.45)">Solo urgencias</span>
+      </div>
+      <div class="hours-row" style="border-bottom:none; padding-bottom:0;">
+        <span class="hours-day">Urgencias</span>
+        <span class="hours-time always">
+          <span class="always-dot"></span>
+          24 h · 365 días
+        </span>
+      </div>
+      <div class="hours-note" style="margin-top:24px;">
+        <p>En caso de <strong>avería urgente fuera de horario</strong>, llama al 611 22 33 44. Siempre hay alguien disponible.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-block reveal d2">
+    <div class="sec-label">Preguntas frecuentes</div>
+    <h2 class="sec-title">Lo que nos<br>suelen preguntar</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿Cuánto cuesta el presupuesto?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">El presupuesto es completamente gratuito y sin compromiso. Un técnico va a tu domicilio, evalúa la avería o instalación y te entrega el precio por escrito. Solo si lo aceptas, se empieza a trabajar.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿En cuánto tiempo llegan ante una urgencia?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">En toda la zona sur de Madrid (Leganés, Getafe, Alcorcón, Fuenlabrada y Móstoles) llegamos en menos de 60 minutos. Si eres cliente con contrato de mantenimiento, la atención es prioritaria.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿Qué garantía tiene el trabajo?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Todos los trabajos cuentan con 24 meses de garantía, tanto en materiales como en mano de obra. Si algo falla dentro de ese plazo, volvemos sin coste adicional. La garantía queda reflejada en la factura oficial.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿Trabajáis fines de semana y festivos?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Sí. El servicio de urgencias está disponible 365 días al año, incluidos festivos nacionales y fines de semana. Para no-urgencias, el sábado atendemos hasta las 14:00 h. Los domingos exclusivamente urgencias.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿Emitís factura oficial con IVA?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Siempre. Somos una empresa registrada, con instaladores habilitados por la Comunidad de Madrid y seguro de responsabilidad civil. Emitimos factura oficial con IVA desglosado en todos los trabajos, sin excepción.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">¿Cubríis municipios fuera de la lista?</span>
+          <span class="faq-icon"><svg width="14" height="14"><use href="#i-plus"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Nuestra zona habitual es el sur de Madrid: Leganés, Getafe, Alcorcón, Fuenlabrada y Móstoles. Para municipios limítrofes como Parla, Pinto o Valdemoro consultamos disponibilidad. Llámanos y te confirmamos.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="index.html" class="footer-logo">
+    <svg width="16" height="16" style="color:var(--aqua); opacity:.7"><use href="#i-pipe"/></svg>
+    Fontanería<span> Ruiz</span>
+  </a>
+  <div class="footer-links">
+    <a href="#">Aviso legal</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Cookies</a>
+  </div>
+  <div class="footer-copy">© 2025 Fontanería Ruiz · Leganés, Madrid</div>
+</footer>
+
+
+<script>
+/* Reveal on scroll */
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    btn.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+/* Contact form */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('formBtn');
+  const nombre   = document.getElementById('fname').value.trim();
+  const telefono = document.getElementById('fphone').value.trim();
+  const servicio = document.getElementById('fservice').value;
+  const terms    = document.getElementById('fterms').checked;
+
+  if (!nombre || !telefono || !servicio || !terms) {
+    [document.getElementById('fname'), document.getElementById('fphone'), document.getElementById('fservice')].forEach(f => {
+      if (!f.value.trim()) {
+        f.style.borderColor = 'var(--red)';
+        f.addEventListener('input', () => f.style.borderColor = '', { once: true });
+      }
+    });
+    if (!terms) {
+      document.getElementById('fterms').style.outline = '2px solid var(--red)';
+      setTimeout(() => document.getElementById('fterms').style.outline = '', 1800);
+    }
+    return;
+  }
+
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  setTimeout(() => {
+    document.getElementById('formContent').style.display = 'none';
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    success.style.animation = 'fadeUp .4s ease both';
+  }, 1100);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios — Fontanería Ruiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0a1929;
+  --navy2:   #112236;
+  --water:   #0077b6;
+  --aqua:    #0096c7;
+  --splash:  #48cae4;
+  --red:     #c0392b;
+  --red2:    #a93226;
+  --fog:     #eef4f8;
+  --white:   #ffffff;
+  --ink:     #0d1b2a;
+  --muted:   #607d8b;
+  --bd-light: rgba(0,0,0,0.07);
+  --bd-dark:  rgba(255,255,255,0.09);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--ink); overflow-x: hidden; }
+
+/* ─ HEADER ─ */
+header {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(10,25,41,0.97); backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 66px;
+  border-bottom: 1px solid var(--bd-dark); gap: 20px;
+}
+.logo {
+  font-family: 'Fraunces', serif; font-size: 19px; font-weight: 700;
+  color: var(--white); letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none; flex-shrink: 0;
+}
+.logo-mark {
+  width: 30px; height: 30px; background: var(--water); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo span { color: var(--splash); }
+nav { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+nav a {
+  font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.55);
+  text-decoration: none; padding: 6px 14px; border-radius: 6px;
+  transition: color .16s, background .16s; white-space: nowrap;
+}
+nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.07); }
+nav a.active { color: var(--splash); }
+.header-right { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.live-badge {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65);
+  text-decoration: none; white-space: nowrap;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.2); flex-shrink: 0; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+  50%      { box-shadow: 0 0 0 7px rgba(74,222,128,0.06); }
+}
+
+/* ─ BUTTONS ─ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  padding: 10px 20px; border-radius: 6px; text-decoration: none; border: none;
+  cursor: pointer; transition: all .17s ease; line-height: 1;
+}
+.btn-lg { padding: 14px 30px; font-size: 15px; }
+.btn-red   { background: var(--red);   color: var(--white); }
+.btn-red:hover   { background: var(--red2); transform: translateY(-1px); }
+.btn-water { background: var(--water); color: var(--white); }
+.btn-water:hover { background: var(--aqua); transform: translateY(-1px); }
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+.btn-outline:hover { border-color: var(--splash); color: var(--splash); }
+.btn-ghost  { background: transparent; border: 2px solid rgba(255,255,255,0.4); color: var(--white); }
+.btn-ghost:hover  { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+/* ─ SECTION COMMONS ─ */
+.sec-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--water); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-label::before {
+  content: ''; display: block; width: 22px; height: 2px;
+  background: var(--water); border-radius: 2px;
+}
+.sec-title {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 14px;
+}
+.sec-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 500px; }
+
+/* ─ REVEAL ─ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+
+/* ─ FOOTER ─ */
+footer {
+  background: var(--navy); padding: 36px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--bd-dark);
+}
+.footer-logo {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+  color: var(--white); display: flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.footer-logo span { color: var(--aqua); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+
+/* ─ CTA SECTION ─ */
+.cta-sec {
+  background: var(--red); padding: 80px 5%; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-sec::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 130%, rgba(0,0,0,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-sec h2 {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 50px); font-weight: 900;
+  letter-spacing: -0.03em; color: var(--white); margin-bottom: 14px; position: relative;
+}
+.cta-sec p { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 36px; position: relative; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* ═══ PAGE HERO ═══ */
+.page-hero {
+  background: var(--navy); padding: 130px 5% 80px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 60%, rgba(0,150,199,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 5% 50%, rgba(192,57,43,0.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: rgba(255,255,255,0.4);
+  margin-bottom: 28px; position: relative;
+}
+.breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.breadcrumb a:hover { color: var(--splash); }
+.breadcrumb span { color: var(--splash); }
+.page-hero-content { position: relative; max-width: 700px; }
+.page-hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 900;
+  line-height: 1.06; letter-spacing: -0.03em; color: var(--white); margin-bottom: 18px;
+}
+.page-hero h1 em { font-style: italic; color: var(--splash); }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; }
+.page-hero-tags {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+  color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500;
+  padding: 6px 14px; border-radius: 20px;
+}
+
+/* ═══ SERVICE SECTIONS ═══ */
+.svc-section {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+  padding: 96px 5%;
+}
+.svc-section.fog-bg { background: var(--fog); }
+.svc-section.white-bg { background: var(--white); }
+
+/* Visual panel (invented image) */
+.sdv-panel {
+  border-radius: 20px; height: 480px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+.sdv-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.sdv-bg-icon {
+  position: absolute; color: white; opacity: 0.08;
+  width: 240px; height: 240px;
+}
+.sdv-badge {
+  position: absolute; top: 24px; left: 24px;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white; padding: 8px 16px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.sdv-price {
+  position: absolute; bottom: 24px; right: 24px;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white; padding: 10px 20px; border-radius: 10px;
+  font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700;
+}
+.sdv-stat-row {
+  position: absolute; bottom: 24px; left: 24px;
+  display: flex; gap: 10px;
+}
+.sdv-stat {
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 8px 14px; border-radius: 10px;
+  text-align: center;
+}
+.sdv-stat-n { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 900; }
+.sdv-stat-l { font-size: 10px; opacity: .7; }
+
+/* Content side */
+.svc-content { }
+.svc-content .sec-label { color: var(--water); }
+.svc-content .sec-label::before { background: var(--water); }
+.svc-content .sec-title { font-size: clamp(26px, 3.5vw, 40px); }
+.svc-content .sec-sub { font-size: 15px; margin-bottom: 28px; }
+
+.price-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,119,182,0.08); border: 1px solid rgba(0,119,182,0.18);
+  color: var(--water); font-size: 13px; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px; margin-bottom: 24px;
+}
+
+.svc-includes {
+  list-style: none; margin: 0 0 32px;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.svc-includes li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14.5px; color: var(--muted); line-height: 1.55;
+}
+.li-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(0,119,182,0.1); border: 1px solid rgba(0,119,182,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px; color: var(--water);
+}
+.svc-content-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Section divider */
+.svc-divider {
+  height: 1px; background: var(--bd-light); margin: 0 5%;
+}
+
+/* ─ RESPONSIVE ─ */
+@media (max-width: 1024px) { nav { display: none; } }
+@media (max-width: 860px) {
+  .svc-section { grid-template-columns: 1fr; gap: 36px; padding: 64px 5%; }
+  .svc-section.reversed .sdv-panel { order: 0; }
+  .sdv-panel { height: 320px; }
+  .live-badge { display: none; }
+}
+@media (max-width: 540px) {
+  header .btn-red { display: none; }
+  .page-hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG DEFS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="3" rx="1"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l2 2"/><path d="M4 20 20 4"/><path d="M2 13c0-2.8 1.6-5.2 4-6.3M12 2c2.8 0 5.2 1.6 6.3 4"/><circle cx="10" cy="18" r=".5" fill="currentColor"/><circle cx="14" cy="18" r=".5" fill="currentColor"/><circle cx="12" cy="21" r=".5" fill="currentColor"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+</svg>
+
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg width="16" height="16" style="color:white"><use href="#i-pipe"/></svg>
+    </div>
+    Fontanería<span> Ruiz</span>
+  </a>
+  <nav>
+    <a href="servicios.html" class="active">Servicios</a>
+    <a href="index.html#zona">Zona de trabajo</a>
+    <a href="index.html#nosotros">Quiénes somos</a>
+    <a href="index.html#opiniones">Opiniones</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <div class="header-right">
+    <a href="tel:+34611223344" class="live-badge">
+      <span class="live-dot"></span>611 22 33 44
+    </a>
+    <a href="contacto.html" class="btn btn-red">Presupuesto gratis</a>
+  </div>
+</header>
+
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content reveal">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 4 15 10 9 16" stroke-linecap="round"/></svg>
+      <span>Servicios</span>
+    </div>
+    <h1>Todo lo que necesita<br><em>tu hogar.</em></h1>
+    <p>De la avería de madrugada a la reforma completa del baño. Trabajamos con todas las marcas, garantizamos cada trabajo y el precio se firma antes de empezar.</p>
+    <div class="page-hero-tags">
+      <span class="hero-tag">⚡ Urgencias 24 h</span>
+      <span class="hero-tag">✅ Garantía 2 años</span>
+      <span class="hero-tag">📍 Sur de Madrid</span>
+      <span class="hero-tag">🧾 Presupuesto sin compromiso</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SERVICIO 1: AVERÍAS ═══ -->
+<section class="svc-section fog-bg" id="averias">
+  <!-- Panel visual -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, #7b1616 0%, #c0392b 55%, #e74c3c 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-lightning"/></svg>
+      Disponible 24 h
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">60'</div><div class="sdv-stat-l">tiempo máx.</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 h</div><div class="sdv-stat-l">siempre</div></div>
+    </div>
+    <div class="sdv-price">Desde 59 € · IVA incl.</div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Servicio urgente</div>
+    <h2 class="sec-title">Averías y<br>urgencias</h2>
+    <p class="sec-sub">Goteras, tuberías reventadas, bajantes obstruidas, grifo que no cierra. Estamos disponibles a cualquier hora, incluidos festivos y fines de semana.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Desde 59 € · Presupuesto previo a cualquier trabajo
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Atención telefónica inmediata, 365 días al año</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Llegada en menos de 60 minutos en toda la zona sur</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Diagnóstico en el momento, sin coste adicional</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reparación de fugas, roturas de tubería y bajantes</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Desatascos de baños, cocinas y galerías</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Garantía escrita de 24 meses en cada reparación</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="tel:+34611223344" class="btn btn-red btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-phone"/></svg>
+        Llamar ahora
+      </a>
+      <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+        <svg width="15" height="15"><use href="#i-whatsapp"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 2: CALEFACCIÓN ═══ -->
+<section class="svc-section white-bg" id="calefaccion">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Instalación y mantenimiento</div>
+    <h2 class="sec-title">Calefacción<br>y ACS</h2>
+    <p class="sec-sub">Instalamos, reparamos y mantenemos calderas de gas y biomasa, suelo radiante, radiadores y sistemas de agua caliente. Trabajamos con todas las marcas del mercado.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Revisión anual desde 79 € · Reparación desde 95 €
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación y sustitución de calderas: Junkers, Baxi, Vaillant, Roca</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Mantenimiento anual con certificado oficial</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reparación de averías en caldera y emisores</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de suelo radiante en reformas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Purga y equilibrado de radiadores</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización ante la distribuidora de gas</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Pedir presupuesto
+      </a>
+    </div>
+  </div>
+
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, #7d3a00 0%, #d35400 55%, #e67e22 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Todas las marcas
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">+15</div><div class="sdv-stat-l">marcas</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
+    </div>
+    <div class="sdv-price">Desde 79 € · revisión anual</div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 3: BAÑOS ═══ -->
+<section class="svc-section fog-bg" id="banos">
+  <!-- Panel visual (izquierda) -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, #023e8a 0%, #0077b6 55%, #0096c7 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l2 2"/><path d="M4 20 20 4"/><path d="M2 13c0-2.8 1.6-5.2 4-6.3M12 2c2.8 0 5.2 1.6 6.3 4"/><circle cx="10" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="21" r="1" fill="currentColor" stroke="none"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Gestión completa
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">4-7</div><div class="sdv-stat-l">días obra</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
+    </div>
+    <div class="sdv-price">Desde 1.800 € · baño completo</div>
+  </div>
+
+  <!-- Contenido (derecha) -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Reforma integral o parcial</div>
+    <h2 class="sec-title">Cuartos<br>de baño</h2>
+    <p class="sec-sub">Transformamos baños completos o cambiamos solo lo que hace falta. Coordinamos a fontanero y alicatador para que tú no tengas que gestionar nada.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Reforma completa desde 1.800 € · Presupuesto sin compromiso
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Sustitución de bañera por plato de ducha</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Cambio de sanitarios: inodoro, lavabo, bidet</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de griferías y accesorios</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reforma de instalación de agua fría y caliente</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Coordinación con alicatador y escayolista</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Gestión de residuos y limpieza final incluidas</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Solicitar visita gratuita
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 4: INSTALACIONES ═══ -->
+<section class="svc-section white-bg" id="instalaciones">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Obra nueva y reforma</div>
+    <h2 class="sec-title">Instalaciones<br>nuevas</h2>
+    <p class="sec-sub">Proyecto, instalación y legalización completa de fontanería en viviendas de obra nueva, rehabilitaciones y locales comerciales. Todo en una misma mano.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Presupuesto detallado por partidas · Sin sorpresas
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Fontanería completa en obra nueva</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Renovación de instalaciones en edificios antiguos</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización ante el Ayuntamiento y distribuidora</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación en locales: bares, restaurantes, clínicas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Coordinación con otros gremios</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Certificados y boletines incluidos</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Consultar proyecto
+      </a>
+    </div>
+  </div>
+
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, #0a1929 0%, #112236 50%, #1a3a5c 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Llave en mano
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">100%</div><div class="sdv-stat-l">legalizado</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
+    </div>
+    <div class="sdv-price">Presupuesto por partidas</div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 5: SOLAR ═══ -->
+<section class="svc-section fog-bg" id="solar">
+  <!-- Panel visual (izquierda) -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, #1a5c2e 0%, #27ae60 55%, #2ecc71 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-sun"/></svg>
+      Ayudas disponibles
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">70%</div><div class="sdv-stat-l">ahorro ACS</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">8-10</div><div class="sdv-stat-l">años ROI</div></div>
+    </div>
+    <div class="sdv-price">Desde 2.500 € con ayudas</div>
+  </div>
+
+  <!-- Contenido (derecha) -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Ahorro energético</div>
+    <h2 class="sec-title">Energía solar<br>térmica ACS</h2>
+    <p class="sec-sub">Instalamos captadores solares térmicos para producir agua caliente sanitaria. Ahorra hasta un 70 % en tu factura y aprovecha las subvenciones vigentes.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Desde 2.500 € con deducciones IRPF · Subvenciones hasta 60%
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Estudio de viabilidad y cálculo de ahorro personalizado</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de captadores solares térmicos</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Gestión de subvenciones y ayudas del Plan MOVES</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Deducción IRPF: hasta el 20 % en vivienda habitual</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización y certificado de instalación</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Mantenimiento anual opcional incluido</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Calcular mi ahorro
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 6: COMUNIDADES ═══ -->
+<section class="svc-section white-bg" id="comunidades">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Empresas y comunidades</div>
+    <h2 class="sec-title">Comunidades<br>y locales</h2>
+    <p class="sec-sub">Contratos anuales de mantenimiento para comunidades de propietarios, oficinas, locales y naves. Un solo interlocutor, precio cerrado, sin sustos.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Contrato anual desde 480 € · Precio cerrado
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Revisiones periódicas programadas incluidas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Atención preferente ante averías 24 h</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Descuento del 15 % en reparaciones e instalaciones</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Informe técnico anual del estado de la instalación</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Interlocutor único para la administración de fincas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Sin permanencia mínima el primer año</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Solicitar contrato
+      </a>
+    </div>
+  </div>
+
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, #1c2833 0%, #2c3e50 55%, #34495e 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Precio cerrado anual
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">15%</div><div class="sdv-stat-l">dto. reparac.</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 h</div><div class="sdv-stat-l">prioritario</div></div>
+    </div>
+    <div class="sdv-price">Desde 480 € / año</div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA URGENCIAS ═══ -->
+<section class="cta-sec">
+  <h2>¿Tienes una urgencia ahora mismo?</h2>
+  <p>Llámanos directamente. Estamos disponibles las 24 horas, también festivos y fines de semana.</p>
+  <div class="cta-btns">
+    <a href="tel:+34611223344" class="btn btn-white btn-lg">
+      <svg width="16" height="16" style="color:var(--red)"><use href="#i-phone"/></svg>
+      611 22 33 44
+    </a>
+    <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+      <svg width="16" height="16"><use href="#i-whatsapp"/></svg>
+      Escribir por WhatsApp
+    </a>
+    <a href="contacto.html" class="btn btn-outline btn-lg">Presupuesto sin compromiso</a>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="index.html" class="footer-logo">
+    <svg width="16" height="16" style="color:var(--aqua); opacity:.7"><use href="#i-pipe"/></svg>
+    Fontanería<span> Ruiz</span>
+  </a>
+  <div class="footer-links">
+    <a href="#">Aviso legal</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Cookies</a>
+  </div>
+  <div class="footer-copy">© 2025 Fontanería Ruiz · Leganés, Madrid</div>
+</footer>
+
+
+<script>
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
