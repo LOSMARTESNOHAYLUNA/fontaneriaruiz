@@ -3,657 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fontanería Ruiz — Leganés y alrededores</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<title>Servicios — Fontanería Ruiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ───────────────────────────────────── */
 :root {
-  --ink:    #070e1b;
-  --panel:  #0d1d2e;
-  --teal:   #00a8c8;
-  --teal2:  #007d96;
-  --red:    #d93025;
-  --red2:   #b32018;
-  --sand:   #f4f7fa;
-  --white:  #ffffff;
-  --muted:  #64788a;
-  --rule:   rgba(0,0,0,0.09);
-  --rule-d: rgba(255,255,255,0.08);
+  --navy:    #0a1929;
+  --navy2:   #112236;
+  --water:   #0077b6;
+  --aqua:    #0096c7;
+  --splash:  #48cae4;
+  --red:     #c0392b;
+  --red2:    #a93226;
+  --fog:     #eef4f8;
+  --white:   #ffffff;
+  --ink:     #0d1b2a;
+  --muted:   #607d8b;
+  --bd-light: rgba(0,0,0,0.07);
+  --bd-dark:  rgba(255,255,255,0.09);
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--ink); overflow-x: hidden; }
 
-body {
-  font-family:'DM Sans', sans-serif;
-  background: var(--sand);
-  color: var(--ink);
-  overflow-x: hidden;
-}
-
-/* Grain texture */
-body::after {
-  content:''; position:fixed; inset:0; z-index:9999;
-  pointer-events:none; opacity:.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* ── TYPOGRAPHY HELPERS ──────────────────────── */
-.display {
-  font-family:'Fraunces', serif;
-  font-weight:900; letter-spacing:-0.035em; line-height:1.05;
-}
-.display-em { font-style:italic; color:var(--teal); }
-
-/* ── HEADER ──────────────────────────────────── */
+/* ─ HEADER ─ */
 header {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  height:62px;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 5%;
-  background:rgba(7,14,27,0.96); backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--rule-d);
-  gap:24px;
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(10,25,41,0.97); backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 66px;
+  border-bottom: 1px solid var(--bd-dark); gap: 20px;
 }
 .logo {
-  font-family:'Fraunces', serif; font-weight:700; font-size:17px;
-  color:var(--white); letter-spacing:-0.03em;
-  display:flex; align-items:center; gap:9px; text-decoration:none; flex-shrink:0;
+  font-family: 'Fraunces', serif; font-size: 19px; font-weight: 700;
+  color: var(--white); letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none; flex-shrink: 0;
 }
 .logo-mark {
-  width:28px; height:28px; border-radius:6px; background:var(--teal);
-  display:flex; align-items:center; justify-content:center;
+  width: 30px; height: 30px; background: var(--water); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
 }
-nav {
-  display:flex; align-items:center; gap:2px; flex:1; justify-content:center;
-}
+.logo span { color: var(--splash); }
+nav { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
 nav a {
-  font-size:13px; font-weight:500; color:rgba(255,255,255,0.48);
-  text-decoration:none; padding:6px 13px; border-radius:6px;
-  transition:color .15s, background .15s;
+  font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.55);
+  text-decoration: none; padding: 6px 14px; border-radius: 6px;
+  transition: color .16s, background .16s; white-space: nowrap;
 }
-nav a:hover { color:var(--white); background:rgba(255,255,255,0.06); }
-.header-right { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.07); }
+nav a.active { color: var(--splash); }
+.header-right { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.live-badge {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65);
+  text-decoration: none; white-space: nowrap;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.2); flex-shrink: 0; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+  50%      { box-shadow: 0 0 0 7px rgba(74,222,128,0.06); }
+}
 
-.pulse-badge {
-  display:flex; align-items:center; gap:7px;
-  font-size:13px; font-weight:500; color:rgba(255,255,255,0.6);
-  text-decoration:none;
-}
-.pulse-dot {
-  width:7px; height:7px; border-radius:50%; background:#4ade80;
-  box-shadow:0 0 0 3px rgba(74,222,128,0.2); flex-shrink:0;
-  animation:dot-pulse 2s infinite;
-}
-@keyframes dot-pulse {
-  0%,100%{ box-shadow:0 0 0 3px rgba(74,222,128,0.2); }
-  50%    { box-shadow:0 0 0 7px rgba(74,222,128,0.05); }
-}
-
-/* ── BUTTONS ──────────────────────────────────── */
+/* ─ BUTTONS ─ */
 .btn {
-  display:inline-flex; align-items:center; justify-content:center; gap:7px;
-  font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600;
-  padding:11px 22px; border-radius:7px; text-decoration:none; border:none;
-  cursor:pointer; transition:all .18s ease; line-height:1; white-space:nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  padding: 10px 20px; border-radius: 6px; text-decoration: none; border: none;
+  cursor: pointer; transition: all .17s ease; line-height: 1;
 }
-.btn-lg { padding:15px 32px; font-size:15px; }
-.btn-red    { background:var(--red); color:var(--white); }
-.btn-red:hover    { background:var(--red2); transform:translateY(-1px); }
-.btn-teal   { background:var(--teal); color:var(--ink); font-weight:700; }
-.btn-teal:hover   { background:var(--teal2); color:var(--white); transform:translateY(-1px); }
-.btn-outline{ background:transparent; border:1.5px solid rgba(255,255,255,0.28); color:var(--white); }
-.btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
-.btn-ghost  { background:transparent; border:1.5px solid rgba(255,255,255,0.35); color:var(--white); }
-.btn-ghost:hover  { border-color:var(--white); background:rgba(255,255,255,0.07); }
-.btn-white  { background:var(--white); color:var(--red); font-weight:700; }
-.btn-white:hover  { background:var(--sand); transform:translateY(-1px); }
-.btn-ink    { background:var(--ink); color:var(--white); }
-.btn-ink:hover    { background:var(--panel); transform:translateY(-1px); }
+.btn-lg { padding: 14px 30px; font-size: 15px; }
+.btn-red   { background: var(--red);   color: var(--white); }
+.btn-red:hover   { background: var(--red2); transform: translateY(-1px); }
+.btn-water { background: var(--water); color: var(--white); }
+.btn-water:hover { background: var(--aqua); transform: translateY(-1px); }
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+.btn-outline:hover { border-color: var(--splash); color: var(--splash); }
+.btn-ghost  { background: transparent; border: 2px solid rgba(255,255,255,0.4); color: var(--white); }
+.btn-ghost:hover  { border-color: var(--white); background: rgba(255,255,255,0.08); }
 
-/* ── HERO ─────────────────────────────────────── */
-.hero {
-  min-height:100vh; background:var(--ink);
-  padding:62px 5% 0;
-  display:grid; grid-template-columns:1fr 440px;
-  align-items:center; gap:48px;
-  position:relative; overflow:hidden;
-}
-
-/* Mesh gradient */
-.hero::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 70% at 75% 55%, rgba(0,168,200,0.11) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 50% at 10% 25%, rgba(217,48,37,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 50% 100%, rgba(13,29,46,0.6) 0%, transparent 70%);
-}
-
-.hero-grid {
-  position:absolute; inset:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size:72px 72px;
-}
-
-.hero-content { position:relative; z-index:1; padding-bottom:48px; }
-
-.hero-pill {
-  display:inline-flex; align-items:center; gap:8px;
-  border:1px solid rgba(0,168,200,0.35); background:rgba(0,168,200,0.1);
-  color:var(--teal); font-size:12px; font-weight:500;
-  padding:5px 14px; border-radius:20px; margin-bottom:32px;
-}
-
-.hero h1 {
-  font-family:'Fraunces', serif; font-weight:900;
-  font-size:clamp(48px, 6.5vw, 86px);
-  line-height:1.02; letter-spacing:-0.038em;
-  color:var(--white); margin-bottom:24px;
-}
-.hero h1 em { font-style:italic; color:var(--teal); }
-
-.hero-sub {
-  font-size:16px; line-height:1.72; color:rgba(255,255,255,0.52);
-  max-width:400px; margin-bottom:38px;
-}
-
-.hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:52px; }
-
-.hero-kpis {
-  display:flex; gap:36px;
-  padding-top:28px; border-top:1px solid var(--rule-d);
-}
-.kpi-val {
-  font-family:'Fraunces', serif; font-weight:900;
-  font-size:30px; line-height:1; color:var(--white); letter-spacing:-0.03em;
-}
-.kpi-val b { color:var(--teal); }
-.kpi-lbl { font-size:11px; color:rgba(255,255,255,0.35); margin-top:5px; }
-
-/* Hero right */
-.hero-right {
-  position:relative; z-index:1;
-  display:flex; flex-direction:column; gap:10px;
-  padding-bottom:48px;
-}
-
-/* Emergency panel */
-.em-panel {
-  background:var(--red); border-radius:18px; padding:28px;
-  position:relative; overflow:hidden;
-}
-.em-panel::before {
-  content:''; position:absolute; right:-32px; top:-32px;
-  width:140px; height:140px; border-radius:50%;
-  background:rgba(255,255,255,0.06); pointer-events:none;
-}
-.em-label {
-  font-size:10.5px; font-weight:600; letter-spacing:0.04em;
-  color:rgba(255,255,255,0.65); margin-bottom:8px;
-  display:flex; align-items:center; gap:6px;
-}
-.em-title {
-  font-family:'Fraunces', serif; font-weight:700; font-size:19px;
-  color:var(--white); line-height:1.25; margin-bottom:16px;
-}
-.em-number {
-  font-family:'Fraunces', serif; font-weight:900; font-size:34px;
-  color:var(--white); text-decoration:none; letter-spacing:-0.02em;
-  display:flex; align-items:center; gap:10px;
-}
-
-/* Trust items */
-.trust-stack { display:flex; flex-direction:column; gap:8px; }
-
-.trust-row {
-  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
-  border-radius:12px; padding:14px 16px;
-  display:flex; align-items:center; gap:12px;
-  transition:background .2s, border-color .2s;
-}
-.trust-row:hover {
-  background:rgba(0,168,200,0.1); border-color:rgba(0,168,200,0.25);
-}
-.tr-icon {
-  width:34px; height:34px; border-radius:8px; flex-shrink:0;
-  background:rgba(0,168,200,0.18); border:1px solid rgba(0,168,200,0.3);
-  display:flex; align-items:center; justify-content:center; color:var(--teal);
-}
-.tr-title { font-size:13px; font-weight:600; color:var(--white); }
-.tr-sub   { font-size:11.5px; color:rgba(255,255,255,0.45); margin-top:2px; }
-
-/* ── MARQUEE ──────────────────────────────────── */
-.marquee-strip {
-  background:var(--teal); overflow:hidden;
-  padding:13px 0; user-select:none;
-}
-.marquee-inner {
-  display:inline-flex; white-space:nowrap;
-  animation:marquee 22s linear infinite;
-}
-.marquee-inner:hover { animation-play-state:paused; }
-.marquee-item {
-  display:inline-flex; align-items:center; gap:14px;
-  padding:0 28px; font-size:12px; font-weight:700;
-  letter-spacing:0.05em; color:var(--ink);
-}
-.marquee-sep { opacity:.4; font-size:16px; font-weight:300; }
-@keyframes marquee {
-  from { transform:translateX(0); }
-  to   { transform:translateX(-50%); }
-}
-
-/* ── SERVICES BENTO ───────────────────────────── */
-.services { padding:96px 5%; background:var(--sand); }
-
-.services-header {
-  display:flex; align-items:flex-end; justify-content:space-between;
-  gap:24px; margin-bottom:44px;
-  flex-wrap:wrap;
-}
-.services-header .sec-label { margin-bottom:10px; }
-
+/* ─ SECTION COMMONS ─ */
 .sec-label {
-  font-size:12px; font-weight:500; color:var(--teal2);
-  display:flex; align-items:center; gap:9px;
-  border-left:2px solid var(--teal); padding-left:10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--water); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-label::before {
+  content: ''; display: block; width: 22px; height: 2px;
+  background: var(--water); border-radius: 2px;
 }
 .sec-title {
-  font-family:'Fraunces', serif; font-weight:900;
-  font-size:clamp(26px, 3.8vw, 42px); letter-spacing:-0.033em;
-  line-height:1.1; color:var(--ink);
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 14px;
 }
-.sec-sub { font-size:15.5px; color:var(--muted); line-height:1.7; max-width:440px; }
+.sec-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 500px; }
 
-/* Bento grid */
-.bento {
-  display:grid;
-  grid-template-columns:repeat(6, 1fr);
-  grid-template-rows:320px 220px;
-  gap:10px;
-}
+/* ─ REVEAL ─ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
 
-.bento-card {
-  border-radius:16px; overflow:hidden; position:relative;
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding:26px; transition:transform .25s, box-shadow .25s;
-  cursor:default;
-}
-.bento-card:hover { transform:translateY(-3px); box-shadow:0 24px 56px rgba(7,14,27,0.15); }
-
-/* Card 1: Averías — featured 3-wide, red */
-.b1 { grid-column:1/4; background:var(--red); }
-/* Card 2: Calefacción — 2-wide */
-.b2 { grid-column:4/6; background:var(--panel); }
-/* Card 3: Baños — 1-wide */
-.b3 { grid-column:6/7; background:#1a2e1a; }
-/* Card 4: Instalaciones */
-.b4 { grid-column:1/3; background:var(--ink); border:1px solid rgba(255,255,255,0.07); }
-/* Card 5: Solar */
-.b5 { grid-column:3/5; background:#1a2a0d; }
-/* Card 6: Comunidades */
-.b6 { grid-column:5/7; background:var(--panel); border:1px solid rgba(0,168,200,0.2); }
-
-.bc-bg-icon {
-  position:absolute; right:-16px; top:-16px;
-  width:160px; height:160px; opacity:.08; color:white;
-}
-.bc-badge {
-  position:absolute; top:20px; left:20px;
-  background:rgba(255,255,255,0.15); backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.2);
-  color:white; font-size:10px; font-weight:600; letter-spacing:0.06em;
-  padding:5px 12px; border-radius:20px;
-}
-.bc-title {
-  font-family:'Fraunces', serif; font-weight:700;
-  font-size:clamp(18px,2.2vw,24px); color:white; line-height:1.2;
-  margin-bottom:8px; letter-spacing:-0.02em;
-}
-.bc-desc {
-  font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6;
-  margin-bottom:16px;
-}
-.bc-link {
-  display:inline-flex; align-items:center; gap:6px;
-  font-size:12.5px; font-weight:600; color:rgba(255,255,255,0.7);
-  text-decoration:none; transition:color .15s, gap .15s;
-}
-.bento-card:hover .bc-link { color:white; gap:9px; }
-
-/* Featured card extras */
-.b1 .bc-title { font-size:clamp(22px,2.8vw,30px); }
-.b1 .bc-desc  { max-width:260px; color:rgba(255,255,255,0.75); }
-.b1 .bc-24h {
-  position:absolute; top:20px; right:20px;
-  font-family:'Fraunces', serif; font-weight:900; font-size:42px;
-  color:rgba(255,255,255,0.15); letter-spacing:-0.04em; line-height:1;
-}
-
-/* ── STATS BAND ───────────────────────────────── */
-.stats-band {
-  background:var(--ink); overflow:hidden; position:relative;
-}
-.stats-band::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 50% 100% at 50% 50%, rgba(0,168,200,0.07) 0%, transparent 70%);
-}
-.stats-inner {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  position:relative;
-}
-.stat-block {
-  padding:56px 40px;
-  border-right:1px solid var(--rule-d);
-  position:relative;
-}
-.stat-block:last-child { border-right:none; }
-
-.stat-n {
-  font-family:'Fraunces', serif; font-weight:900;
-  font-size:clamp(60px, 7vw, 92px); line-height:1;
-  letter-spacing:-0.05em; color:var(--white);
-  margin-bottom:10px;
-}
-.stat-n b { color:var(--teal); font-style:italic; }
-.stat-l { font-size:13px; color:rgba(255,255,255,0.35); line-height:1.5; max-width:160px; }
-
-/* ── ABOUT ────────────────────────────────────── */
-.about {
-  padding:100px 5%; background:var(--white);
-  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
-}
-
-/* Photo collage */
-.photo-collage {
-  display:grid; grid-template-columns:1fr 1fr;
-  grid-template-rows:180px 120px 140px;
-  gap:8px;
-}
-.pc-tile {
-  border-radius:14px; overflow:hidden; position:relative;
-  display:flex; flex-direction:column; justify-content:flex-end; padding:18px;
-}
-.pc-1 {
-  grid-column:1/2; grid-row:1/2;
-  background:linear-gradient(135deg, #0d1d2e 0%, #1a3352 100%);
-}
-.pc-2 {
-  grid-column:2/3; grid-row:1/2;
-  background:linear-gradient(135deg, #00a8c8 0%, #007d96 100%);
-}
-.pc-3 {
-  grid-column:1/3; grid-row:2/3;
-  background:linear-gradient(135deg, #070e1b 0%, #0d1d2e 100%);
-  flex-direction:row; align-items:center; justify-content:space-between;
-}
-.pc-4 {
-  grid-column:1/2; grid-row:3/4;
-  background:linear-gradient(135deg, #d93025 0%, #a8201a 100%);
-}
-.pc-5 {
-  grid-column:2/3; grid-row:3/4;
-  background:linear-gradient(135deg, #0c1f12 0%, #1a3322 100%);
-}
-
-.pc-tile .pt-label { font-size:10px; font-weight:600; letter-spacing:0.06em; color:rgba(255,255,255,0.5); margin-bottom:5px; }
-.pc-tile .pt-val   { font-family:'Fraunces', serif; font-weight:900; font-size:28px; color:var(--white); letter-spacing:-0.03em; line-height:1; }
-.pc-tile .pt-sub   { font-size:11px; color:rgba(255,255,255,0.55); margin-top:3px; }
-.pc-3 .pt-block    { }
-.pc-grid-dec {
-  position:absolute; inset:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size:28px 28px;
-}
-
-/* About content */
-.about-content .sec-label { border-left-color:var(--teal); color:var(--teal2); margin-bottom:14px; }
-.about-content .sec-title { margin-bottom:16px; }
-.about-content .sec-sub { color:var(--muted); margin-bottom:36px; }
-
-.feat-list { display:flex; flex-direction:column; gap:20px; margin-bottom:36px; }
-.feat {
-  display:flex; gap:14px; align-items:flex-start;
-  padding-bottom:20px; border-bottom:1px solid var(--rule);
-}
-.feat:last-child { border-bottom:none; padding-bottom:0; }
-.feat-num {
-  font-family:'Fraunces', serif; font-weight:900; font-size:20px;
-  color:var(--teal); line-height:1; flex-shrink:0; min-width:28px;
-}
-.feat-text strong { font-weight:600; color:var(--ink); display:block; margin-bottom:3px; }
-.feat-text span { font-size:14px; color:var(--muted); line-height:1.6; }
-
-/* ── TESTIMONIALS ─────────────────────────────── */
-.testimonials { padding:96px 5%; background:var(--sand); }
-.testi-header { margin-bottom:52px; }
-.testi-header .sec-label { margin-bottom:12px; }
-
-.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-
-.testi-card {
-  background:var(--white); border:1px solid var(--rule);
-  border-radius:16px; padding:32px;
-  position:relative; overflow:hidden;
-  transition:box-shadow .22s, border-color .22s;
-}
-.testi-card:hover {
-  box-shadow:0 16px 44px rgba(7,14,27,0.08);
-  border-color:rgba(0,168,200,0.2);
-}
-.testi-quote {
-  font-family:'Fraunces', serif; font-size:72px; font-weight:900;
-  line-height:1; color:rgba(0,168,200,0.12);
-  position:absolute; top:20px; right:24px; letter-spacing:-0.05em;
-  user-select:none; pointer-events:none;
-}
-.testi-stars { display:flex; gap:3px; margin-bottom:16px; color:#f59e0b; }
-.testi-text {
-  font-size:15px; line-height:1.78; color:#3d5168;
-  margin-bottom:24px; font-style:italic; position:relative;
-}
-.testi-author { display:flex; align-items:center; gap:10px; }
-.ta-av {
-  width:36px; height:36px; border-radius:50%; flex-shrink:0;
-  background:linear-gradient(135deg, var(--ink) 0%, var(--teal2) 100%);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Fraunces', serif; font-size:12px; font-weight:700; color:white;
-}
-.ta-name  { font-size:14px; font-weight:600; color:var(--ink); }
-.ta-where { font-size:12px; color:var(--muted); }
-
-/* ── PROCESS ──────────────────────────────────── */
-.process {
-  padding:100px 5%; background:var(--ink);
-  position:relative; overflow:hidden;
-}
-.process::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 60% 80% at 50% 0%, rgba(0,168,200,0.06) 0%, transparent 60%);
-}
-.process-header { text-align:center; margin-bottom:72px; }
-.process-header .sec-label { justify-content:center; border-left:none; border-bottom:1px solid var(--teal); padding-left:0; padding-bottom:4px; display:inline-flex; color:var(--teal); }
-.process-header .sec-title { color:var(--white); margin-top:14px; }
-.process-header .sec-sub   { color:rgba(255,255,255,0.4); margin:12px auto 0; }
-
-.steps {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:0; max-width:860px; margin:0 auto;
-  position:relative;
-}
-.steps::after {
-  content:''; position:absolute;
-  top:28px; left:calc(16.67% + 24px); right:calc(16.67% + 24px);
-  height:1px; background:rgba(0,168,200,0.2);
-}
-.step { text-align:center; padding:0 32px; position:relative; }
-.step-circle {
-  width:56px; height:56px; border-radius:50%;
-  background:rgba(0,168,200,0.1); border:1px solid rgba(0,168,200,0.28);
-  display:flex; align-items:center; justify-content:center;
-  margin:0 auto 24px; font-family:'Fraunces', serif;
-  font-size:20px; font-weight:900; color:var(--teal);
-  position:relative; z-index:1; transition:all .25s;
-}
-.step:hover .step-circle {
-  background:rgba(0,168,200,0.2); border-color:var(--teal);
-  box-shadow:0 0 32px rgba(0,168,200,0.2);
-}
-.step-title { font-family:'Fraunces', serif; font-size:17px; font-weight:700; color:var(--white); margin-bottom:10px; }
-.step-desc  { font-size:13.5px; color:rgba(255,255,255,0.4); line-height:1.72; }
-
-/* ── CTA ─────────────────────────────────────── */
-.cta-sec {
-  background:var(--red); padding:88px 5%; text-align:center;
-  position:relative; overflow:hidden;
-}
-.cta-sec::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 80% 100% at 50% 110%, rgba(0,0,0,0.2) 0%, transparent 65%);
-}
-.cta-sec h2 {
-  font-family:'Fraunces', serif; font-weight:900;
-  font-size:clamp(28px, 4.5vw, 56px); letter-spacing:-0.035em;
-  color:var(--white); margin-bottom:14px; position:relative;
-}
-.cta-sec p { font-size:16.5px; color:rgba(255,255,255,0.72); margin-bottom:38px; position:relative; }
-.cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
-
-/* ── CONTACT ─────────────────────────────────── */
-.contact-sec { padding:96px 5%; background:var(--white); }
-.contact-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:48px; align-items:start; margin-top:52px;
-}
-.contact-form-card {
-  background:var(--sand); border:1px solid var(--rule);
-  border-radius:20px; padding:40px;
-}
-.form-title { font-family:'Fraunces', serif; font-size:21px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:6px; }
-.form-sub { font-size:13.5px; color:var(--muted); margin-bottom:26px; line-height:1.6; }
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.form-group { margin-bottom:14px; }
-.form-group label { display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:7px; }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width:100%; background:var(--white); border:1.5px solid var(--rule);
-  border-radius:8px; padding:12px 14px; font-family:'DM Sans',sans-serif;
-  font-size:14px; color:var(--ink); outline:none;
-  transition:border-color .18s, background .18s; appearance:none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--teal); }
-.form-group select {
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364788a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 14px center; padding-right:38px; cursor:pointer;
-}
-.form-group textarea { resize:none; height:100px; }
-.form-check { display:flex; align-items:flex-start; gap:10px; margin-bottom:20px; }
-.form-check input[type="checkbox"] { width:16px; height:16px; accent-color:var(--teal); flex-shrink:0; margin-top:2px; cursor:pointer; }
-.form-check label { font-size:12px; color:var(--muted); line-height:1.55; cursor:pointer; }
-.form-check a { color:var(--teal2); }
-.form-submit { width:100%; justify-content:center; }
-.form-success { display:none; text-align:center; padding:36px 16px; }
-.success-ring {
-  width:60px; height:60px; border-radius:50%;
-  background:rgba(0,168,200,0.1); border:1.5px solid rgba(0,168,200,0.3);
-  display:flex; align-items:center; justify-content:center;
-  margin:0 auto 16px; color:var(--teal);
-}
-.form-success h3 { font-family:'Fraunces', serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
-.form-success p  { font-size:13.5px; color:var(--muted); line-height:1.6; }
-
-/* Map + contacts side */
-.contact-side { display:flex; flex-direction:column; gap:14px; }
-.map-wrap { border-radius:14px; overflow:hidden; height:240px; border:1px solid var(--rule); }
-.map-wrap iframe { width:100%; height:100%; border:0; display:block; }
-.contact-cards { display:flex; flex-direction:column; gap:10px; }
-.contact-card {
-  background:var(--sand); border:1px solid var(--rule);
-  border-radius:12px; padding:16px 18px;
-  display:flex; align-items:center; gap:14px;
-  text-decoration:none; color:inherit; transition:all .2s;
-}
-.contact-card:hover { border-color:rgba(0,168,200,0.3); box-shadow:0 8px 24px rgba(7,14,27,0.06); transform:translateY(-2px); }
-.cc-ic { width:40px; height:40px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.cc-ic.r  { background:rgba(217,48,37,0.1);  color:var(--red); }
-.cc-ic.g  { background:rgba(37,211,102,0.1); color:#25d366; }
-.cc-ic.t  { background:rgba(0,168,200,0.1);  color:var(--teal2); }
-.cc-lbl { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:2px; }
-.cc-val { font-family:'Fraunces', serif; font-size:16px; font-weight:700; color:var(--ink); letter-spacing:-0.02em; }
-.cc-sub { font-size:11px; color:var(--muted); margin-top:1px; }
-
-/* ── FOOTER ──────────────────────────────────── */
+/* ─ FOOTER ─ */
 footer {
-  background:var(--ink); padding:34px 5%;
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:16px; border-top:1px solid var(--rule-d);
+  background: var(--navy); padding: 36px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid var(--bd-dark);
 }
 .footer-logo {
-  font-family:'Fraunces', serif; font-weight:700; font-size:17px;
-  color:var(--white); display:flex; align-items:center; gap:8px; text-decoration:none;
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+  color: var(--white); display: flex; align-items: center; gap: 8px; text-decoration: none;
 }
-.footer-logo span { color:var(--teal); }
-.footer-links { display:flex; gap:24px; }
-.footer-links a { font-size:12.5px; color:rgba(255,255,255,0.3); text-decoration:none; transition:color .15s; }
-.footer-links a:hover { color:var(--white); }
-.footer-copy { font-size:12px; color:rgba(255,255,255,0.2); }
+.footer-logo span { color: var(--aqua); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
 
-/* ── REVEAL ──────────────────────────────────── */
-.reveal { opacity:0; transform:translateY(22px); transition:opacity .52s ease, transform .52s ease; }
-.reveal.in { opacity:1; transform:translateY(0); }
-.d1{transition-delay:.08s;} .d2{transition-delay:.18s;} .d3{transition-delay:.28s;}
+/* ─ CTA SECTION ─ */
+.cta-sec {
+  background: var(--red); padding: 80px 5%; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-sec::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 130%, rgba(0,0,0,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-sec h2 {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 50px); font-weight: 900;
+  letter-spacing: -0.03em; color: var(--white); margin-bottom: 14px; position: relative;
+}
+.cta-sec p { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 36px; position: relative; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
 
-/* ── RESPONSIVE ──────────────────────────────── */
-@media(max-width:1100px) {
-  .bento { grid-template-rows:260px 200px; }
+/* ═══ PAGE HERO ═══ */
+.page-hero {
+  background: var(--navy); padding: 130px 5% 80px;
+  position: relative; overflow: hidden;
 }
-@media(max-width:1024px) {
-  nav { display:none; }
-  .stats-inner { grid-template-columns:repeat(2,1fr); }
-  .stat-block:nth-child(2) { border-right:none; }
-  .stat-block:nth-child(3) { border-top:1px solid var(--rule-d); }
-  .stat-block:nth-child(4) { border-top:1px solid var(--rule-d); border-right:none; }
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 60%, rgba(0,150,199,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 5% 50%, rgba(192,57,43,0.07) 0%, transparent 55%);
+  pointer-events: none;
 }
-@media(max-width:900px) {
-  .hero { grid-template-columns:1fr; padding-bottom:56px; gap:32px; }
-  .hero h1 { font-size:clamp(42px,10vw,72px); }
-  .bento {
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:220px 180px 180px;
-  }
-  .b1 { grid-column:1/3; }
-  .b2 { grid-column:1/2; }
-  .b3 { grid-column:2/3; }
-  .b4 { grid-column:1/2; }
-  .b5 { grid-column:2/3; }
-  .b6 { grid-column:1/3; }
-  .about { grid-template-columns:1fr; gap:48px; }
-  .testi-grid { grid-template-columns:1fr; }
-  .contact-grid { grid-template-columns:1fr; }
-  .steps { grid-template-columns:1fr; gap:40px; }
-  .steps::after { display:none; }
-  .pulse-badge { display:none; }
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none;
 }
-@media(max-width:540px) {
-  header .btn-red { display:none; }
-  .hero-kpis { gap:20px; }
-  .stats-inner { grid-template-columns:1fr 1fr; }
-  .photo-collage { grid-template-rows:140px 100px 120px; }
-  .form-row { grid-template-columns:1fr; }
-  .contact-form-card { padding:26px 20px; }
-  .bento { grid-template-columns:1fr; grid-template-rows:repeat(6,180px); }
-  .b1,.b2,.b3,.b4,.b5,.b6 { grid-column:1/2; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: rgba(255,255,255,0.4);
+  margin-bottom: 28px; position: relative;
+}
+.breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.breadcrumb a:hover { color: var(--splash); }
+.breadcrumb span { color: var(--splash); }
+.page-hero-content { position: relative; max-width: 700px; }
+.page-hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 900;
+  line-height: 1.06; letter-spacing: -0.03em; color: var(--white); margin-bottom: 18px;
+}
+.page-hero h1 em { font-style: italic; color: var(--splash); }
+.page-hero p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 520px; }
+.page-hero-tags {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+  color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500;
+  padding: 6px 14px; border-radius: 20px;
+}
+
+/* ═══ SERVICE SECTIONS ═══ */
+.svc-section {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+  padding: 96px 5%;
+}
+.svc-section.fog-bg { background: var(--fog); }
+.svc-section.white-bg { background: var(--white); }
+
+/* Visual panel (invented image) */
+.sdv-panel {
+  border-radius: 20px; height: 480px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+.sdv-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.sdv-bg-icon {
+  position: absolute; color: white; opacity: 0.08;
+  width: 240px; height: 240px;
+}
+.sdv-badge {
+  position: absolute; top: 24px; left: 24px;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white; padding: 8px 16px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.sdv-price {
+  position: absolute; bottom: 24px; right: 24px;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white; padding: 10px 20px; border-radius: 10px;
+  font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700;
+}
+.sdv-stat-row {
+  position: absolute; bottom: 24px; left: 24px;
+  display: flex; gap: 10px;
+}
+.sdv-stat {
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 8px 14px; border-radius: 10px;
+  text-align: center;
+}
+.sdv-stat-n { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 900; }
+.sdv-stat-l { font-size: 10px; opacity: .7; }
+
+/* Content side */
+.svc-content { }
+.svc-content .sec-label { color: var(--water); }
+.svc-content .sec-label::before { background: var(--water); }
+.svc-content .sec-title { font-size: clamp(26px, 3.5vw, 40px); }
+.svc-content .sec-sub { font-size: 15px; margin-bottom: 28px; }
+
+.price-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,119,182,0.08); border: 1px solid rgba(0,119,182,0.18);
+  color: var(--water); font-size: 13px; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px; margin-bottom: 24px;
+}
+
+.svc-includes {
+  list-style: none; margin: 0 0 32px;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.svc-includes li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14.5px; color: var(--muted); line-height: 1.55;
+}
+.li-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(0,119,182,0.1); border: 1px solid rgba(0,119,182,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px; color: var(--water);
+}
+.svc-content-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Section divider */
+.svc-divider {
+  height: 1px; background: var(--bd-light); margin: 0 5%;
+}
+
+/* ─ RESPONSIVE ─ */
+@media (max-width: 1024px) { nav { display: none; } }
+@media (max-width: 860px) {
+  .svc-section { grid-template-columns: 1fr; gap: 36px; padding: 64px 5%; }
+  .svc-section.reversed .sdv-panel { order: 0; }
+  .sdv-panel { height: 320px; }
+  .live-badge { display: none; }
+}
+@media (max-width: 540px) {
+  header .btn-red { display: none; }
+  .page-hero h1 { font-size: 32px; }
 }
 </style>
 </head>
 <body>
 
-<!-- SVG SYMBOLS -->
+<!-- SVG DEFS -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="3" rx="1"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
@@ -663,561 +297,371 @@ footer {
   <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
   <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
-  <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M9 7h6M9 11h6M9 15h4"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></symbol>
   <symbol id="i-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
   <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
 </svg>
 
 
-<!-- ═══ HEADER ══════════════════════════════════ -->
+<!-- ═══ HEADER ═══ -->
 <header>
   <a href="index.html" class="logo">
     <div class="logo-mark">
-      <svg width="15" height="15" style="color:var(--ink)"><use href="#i-pipe"/></svg>
+      <svg width="16" height="16" style="color:white"><use href="#i-pipe"/></svg>
     </div>
-    Fontanería<span style="color:var(--teal)"> Ruiz</span>
+    Fontanería<span> Ruiz</span>
   </a>
   <nav>
-    <a href="servicios.html">Servicios</a>
-    <a href="#zona">Zona de trabajo</a>
-    <a href="#nosotros">Quiénes somos</a>
-    <a href="#opiniones">Opiniones</a>
+    <a href="servicios.html" class="active">Servicios</a>
+    <a href="index.html#zona">Zona de trabajo</a>
+    <a href="index.html#nosotros">Quiénes somos</a>
+    <a href="index.html#opiniones">Opiniones</a>
     <a href="contacto.html">Contacto</a>
   </nav>
   <div class="header-right">
-    <a href="tel:+34611223344" class="pulse-badge">
-      <span class="pulse-dot"></span>611 22 33 44
+    <a href="tel:+34611223344" class="live-badge">
+      <span class="live-dot"></span>611 22 33 44
     </a>
     <a href="contacto.html" class="btn btn-red">Presupuesto gratis</a>
   </div>
 </header>
 
 
-<!-- ═══ HERO ════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-grid"></div>
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content reveal">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 4 15 10 9 16" stroke-linecap="round"/></svg>
+      <span>Servicios</span>
+    </div>
+    <h1>Todo lo que necesita<br><em>tu hogar.</em></h1>
+    <p>De la avería de madrugada a la reforma completa del baño. Trabajamos con todas las marcas, garantizamos cada trabajo y el precio se firma antes de empezar.</p>
+    <div class="page-hero-tags">
+      <span class="hero-tag">⚡ Urgencias 24 h</span>
+      <span class="hero-tag">✅ Garantía 2 años</span>
+      <span class="hero-tag">📍 Sur de Madrid</span>
+      <span class="hero-tag">🧾 Presupuesto sin compromiso</span>
+    </div>
+  </div>
+</section>
 
-  <div class="hero-content reveal">
-    <div class="hero-pill">
-      <svg width="11" height="11" style="color:var(--teal)"><use href="#i-pin"/></svg>
-      Leganés · Alcorcón · Getafe · Móstoles
+
+<!-- ═══ SERVICIO 1: AVERÍAS ═══ -->
+<section class="svc-section fog-bg" id="averias">
+  <!-- Panel visual -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, rgba(123,22,22,0.82) 0%, rgba(192,57,43,0.74) 100%), url('img/fontaneria.webp') center/cover no-repeat;">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-lightning"/></svg>
+      Disponible 24 h
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">60'</div><div class="sdv-stat-l">tiempo máx.</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 h</div><div class="sdv-stat-l">siempre</div></div>
+    </div>
+    <div class="sdv-price">Desde 59 € · IVA incl.</div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Servicio urgente</div>
+    <h2 class="sec-title">Averías y<br>urgencias</h2>
+    <p class="sec-sub">Goteras, tuberías reventadas, bajantes obstruidas, grifo que no cierra. Estamos disponibles a cualquier hora, incluidos festivos y fines de semana.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Desde 59 € · Presupuesto previo a cualquier trabajo
     </div>
 
-    <h1 class="display">
-      Tu fontanero<br>de confianza<br><em>desde 1997.</em>
-    </h1>
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Atención telefónica inmediata, 365 días al año</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Llegada en menos de 60 minutos en toda la zona sur</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Diagnóstico en el momento, sin coste adicional</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reparación de fugas, roturas de tubería y bajantes</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Desatascos de baños, cocinas y galerías</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Garantía escrita de 24 meses en cada reparación</li>
+    </ul>
 
-    <p class="hero-sub">
-      Averías, instalaciones, calefacción y urgencias. Presupuesto sin compromiso en menos de dos horas. Más de 25 años cuidando hogares en el sur de Madrid.
-    </p>
-
-    <div class="hero-btns">
+    <div class="svc-content-btns">
       <a href="tel:+34611223344" class="btn btn-red btn-lg">
         <svg width="15" height="15" style="color:white"><use href="#i-phone"/></svg>
         Llamar ahora
       </a>
-      <a href="servicios.html" class="btn btn-outline btn-lg">Ver servicios</a>
-    </div>
-
-    <div class="hero-kpis">
-      <div>
-        <div class="kpi-val">25<b>+</b></div>
-        <div class="kpi-lbl">Años de experiencia</div>
-      </div>
-      <div>
-        <div class="kpi-val">2.400<b>+</b></div>
-        <div class="kpi-lbl">Clientes atendidos</div>
-      </div>
-      <div>
-        <div class="kpi-val">4,9<b>★</b></div>
-        <div class="kpi-lbl">Valoración en Google</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-right reveal d2">
-    <div class="em-panel">
-      <div class="em-label">
-        <svg width="11" height="11"><use href="#i-lightning"/></svg>
-        Urgencias 24 horas
-      </div>
-      <div class="em-title">Goteras, roturas y averías sin aviso</div>
-      <a href="tel:+34611223344" class="em-number">
-        <svg width="20" height="20" style="color:white"><use href="#i-phone"/></svg>
-        611 22 33 44
+      <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
+        <svg width="15" height="15"><use href="#i-whatsapp"/></svg>
+        WhatsApp
       </a>
-    </div>
-
-    <div class="trust-stack" id="zona">
-      <div class="trust-row">
-        <div class="tr-icon"><svg width="17" height="17"><use href="#i-receipt"/></svg></div>
-        <div>
-          <div class="tr-title">Presupuesto gratis</div>
-          <div class="tr-sub">Sin compromiso, mismo día</div>
-        </div>
-      </div>
-      <div class="trust-row">
-        <div class="tr-icon"><svg width="17" height="17"><use href="#i-shield"/></svg></div>
-        <div>
-          <div class="tr-title">Garantía 2 años</div>
-          <div class="tr-sub">Materiales y mano de obra</div>
-        </div>
-      </div>
-      <div class="trust-row">
-        <div class="tr-icon"><svg width="17" height="17"><use href="#i-pin"/></svg></div>
-        <div>
-          <div class="tr-title">Sur de Madrid</div>
-          <div class="tr-sub">Llegamos en menos de 60 min</div>
-        </div>
-      </div>
-      <div class="trust-row">
-        <div class="tr-icon"><svg width="17" height="17"><use href="#i-receipt"/></svg></div>
-        <div>
-          <div class="tr-title">Factura oficial</div>
-          <div class="tr-sub">Empresa registrada, IVA incluido</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
+<div class="svc-divider"></div>
 
-<!-- ═══ MARQUEE ═════════════════════════════════ -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-inner">
-    <!-- First set -->
-    <span class="marquee-item">Leganés <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Getafe <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Alcorcón <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Fuenlabrada <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Móstoles <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Urgencias 24 h <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Garantía 2 años <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Presupuesto gratis <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Instalador habilitado <span class="marquee-sep">·</span></span>
-    <!-- Duplicate for seamless loop -->
-    <span class="marquee-item">Leganés <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Getafe <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Alcorcón <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Fuenlabrada <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Móstoles <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Urgencias 24 h <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Garantía 2 años <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Presupuesto gratis <span class="marquee-sep">·</span></span>
-    <span class="marquee-item">Instalador habilitado <span class="marquee-sep">·</span></span>
-  </div>
-</div>
+<!-- ═══ SERVICIO 2: CALEFACCIÓN ═══ -->
+<section class="svc-section white-bg" id="calefaccion">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Instalación y mantenimiento</div>
+    <h2 class="sec-title">Calefacción<br>y ACS</h2>
+    <p class="sec-sub">Instalamos, reparamos y mantenemos calderas de gas y biomasa, suelo radiante, radiadores y sistemas de agua caliente. Trabajamos con todas las marcas del mercado.</p>
 
-
-<!-- ═══ SERVICES BENTO ══════════════════════════ -->
-<section class="services" id="servicios">
-  <div class="services-header">
-    <div>
-      <div class="sec-label">Lo que hacemos</div>
-      <h2 class="sec-title" style="margin-top:12px">Servicios de fontanería<br>y calefacción</h2>
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Revisión anual desde 79 € · Reparación desde 95 €
     </div>
-    <div>
-      <p class="sec-sub">De la avería más urgente a la reforma más completa.</p>
-      <a href="servicios.html" class="btn btn-ink" style="margin-top:16px">
-        Ver todos en detalle <svg width="14" height="14" style="color:var(--teal)"><use href="#i-arrow"/></svg>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación y sustitución de calderas: Junkers, Baxi, Vaillant, Roca</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Mantenimiento anual con certificado oficial</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reparación de averías en caldera y emisores</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de suelo radiante en reformas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Purga y equilibrado de radiadores</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización ante la distribuidora de gas</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Pedir presupuesto
       </a>
     </div>
   </div>
 
-  <div class="bento reveal">
-
-    <!-- AVERÍAS — featured -->
-    <div class="bento-card b1">
-      <div class="bc-24h">24H</div>
-      <div class="bc-badge">
-        <svg width="10" height="10"><use href="#i-lightning"/></svg>
-        Urgente · Disponible ahora
-      </div>
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-      <div>
-        <div class="bc-title">Averías y urgencias</div>
-        <div class="bc-desc">Goteras, tuberías reventadas, bajantes obstruidas. Atención inmediata 24 horas, también fines de semana.</div>
-        <a href="tel:+34611223344" class="bc-link">
-          Llamar ahora <svg width="13" height="13"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, rgba(125,58,0,0.85) 0%, rgba(211,84,0,0.77) 100%), url('img/calefaccion.webp') center/cover no-repeat;">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Todas las marcas
     </div>
-
-    <!-- CALEFACCIÓN -->
-    <div class="bento-card b2">
-      <div class="bc-badge">Junkers · Baxi · Vaillant</div>
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0z"/></svg>
-      <div>
-        <div class="bc-title">Calefacción y ACS</div>
-        <div class="bc-desc">Instalación y mantenimiento de calderas y suelo radiante.</div>
-        <a href="servicios.html#calefaccion" class="bc-link">Presupuesto <svg width="13" height="13"><use href="#i-arrow"/></svg></a>
-      </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">+15</div><div class="sdv-stat-l">marcas</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
     </div>
-
-    <!-- BAÑOS -->
-    <div class="bento-card b3">
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4l2 2"/><path d="M4 20 20 4"/><path d="M2 13c0-2.8 1.6-5.2 4-6.3M12 2c2.8 0 5.2 1.6 6.3 4"/></svg>
-      <div>
-        <div class="bc-title">Baños</div>
-        <div class="bc-desc">Reforma integral.</div>
-        <a href="servicios.html#banos" class="bc-link">Ver <svg width="13" height="13"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
-    <!-- INSTALACIONES -->
-    <div class="bento-card b4">
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      <div>
-        <div class="bc-title">Instalaciones nuevas</div>
-        <div class="bc-desc">Obra nueva y reformas integrales con legalización.</div>
-        <a href="servicios.html#instalaciones" class="bc-link">Consultar <svg width="13" height="13"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
-    <!-- SOLAR -->
-    <div class="bento-card b5">
-      <div class="bc-badge">Ahorra hasta un 70%</div>
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      <div>
-        <div class="bc-title">Energía solar ACS</div>
-        <div class="bc-desc">Placas solares térmicas con subvenciones disponibles.</div>
-        <a href="servicios.html#solar" class="bc-link">Calcular ahorro <svg width="13" height="13"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
-    <!-- COMUNIDADES -->
-    <div class="bento-card b6">
-      <svg class="bc-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
-      <div>
-        <div class="bc-title">Comunidades y locales</div>
-        <div class="bc-desc">Contrato anual con precio cerrado y atención prioritaria.</div>
-        <a href="servicios.html#comunidades" class="bc-link">Solicitar contrato <svg width="13" height="13"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
+    <div class="sdv-price">Desde 79 € · revisión anual</div>
   </div>
 </section>
 
+<div class="svc-divider"></div>
 
-<!-- ═══ STATS BAND ══════════════════════════════ -->
-<div class="stats-band">
-  <div class="stats-inner">
-    <div class="stat-block reveal d1">
-      <div class="stat-n">25<b>+</b></div>
-      <div class="stat-l">Años de experiencia en el sur de Madrid</div>
+<!-- ═══ SERVICIO 3: BAÑOS ═══ -->
+<section class="svc-section fog-bg" id="banos">
+  <!-- Panel visual (izquierda) -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, rgba(2,62,138,0.85) 0%, rgba(0,119,182,0.77) 100%), url('img/baños.webp') center/cover no-repeat;">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l2 2"/><path d="M4 20 20 4"/><path d="M2 13c0-2.8 1.6-5.2 4-6.3M12 2c2.8 0 5.2 1.6 6.3 4"/><circle cx="10" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="21" r="1" fill="currentColor" stroke="none"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Gestión completa
     </div>
-    <div class="stat-block reveal d2">
-      <div class="stat-n">2.400<b>+</b></div>
-      <div class="stat-l">Hogares y negocios atendidos</div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">4-7</div><div class="sdv-stat-l">días obra</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
     </div>
-    <div class="stat-block reveal d3">
-      <div class="stat-n">4,9<b>★</b></div>
-      <div class="stat-l">Valoración media en Google Maps</div>
-    </div>
-    <div class="stat-block reveal d3">
-      <div class="stat-n">&lt;60<b>'</b></div>
-      <div class="stat-l">Tiempo máximo de llegada en urgencias</div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══ ABOUT ════════════════════════════════════ -->
-<section class="about" id="nosotros">
-
-  <!-- Photo collage (invented images via CSS) -->
-  <div class="photo-collage reveal d1">
-    <div class="pc-tile pc-1">
-      <div class="pc-grid-dec"></div>
-      <div class="pt-label">Fundada</div>
-      <div class="pt-val">1997</div>
-      <div class="pt-sub">Leganés, Madrid</div>
-    </div>
-    <div class="pc-tile pc-2">
-      <div class="pc-grid-dec"></div>
-      <div class="pt-label">Google</div>
-      <div class="pt-val">4,9 ★</div>
-      <div class="pt-sub">340 reseñas</div>
-    </div>
-    <div class="pc-tile pc-3">
-      <div class="pc-grid-dec"></div>
-      <div class="pt-block">
-        <div class="pt-label">Servicio urgencias</div>
-        <div class="pt-val" style="font-size:44px">24 h</div>
-      </div>
-      <div class="pt-block" style="text-align:right">
-        <div class="pt-label">Garantía</div>
-        <div class="pt-val">2 años</div>
-      </div>
-    </div>
-    <div class="pc-tile pc-4">
-      <div class="pc-grid-dec"></div>
-      <div class="pt-label">Atención</div>
-      <div class="pt-val" style="font-size:22px">Sin sorpresas</div>
-    </div>
-    <div class="pc-tile pc-5">
-      <div class="pc-grid-dec"></div>
-      <div class="pt-label">Zona</div>
-      <div class="pt-val" style="font-size:18px">Sur Madrid</div>
-      <div class="pt-sub">5 municipios</div>
-    </div>
+    <div class="sdv-price">Desde 1.800 € · baño completo</div>
   </div>
 
-  <!-- Content -->
-  <div class="about-content reveal d2">
-    <div class="sec-label">Quiénes somos</div>
-    <h2 class="sec-title" style="margin-top:12px; color:var(--ink)">
-      Familia Ruiz.<br>Tres generaciones<br>de oficio.
-    </h2>
-    <p class="sec-sub" style="margin-bottom:36px">
-      Lo que empezó Carlos Ruiz en 1997 en su taller de Leganés lo siguen hoy sus hijos con los mismos valores: trabajo bien hecho, precio justo y cara visible.
-    </p>
+  <!-- Contenido (derecha) -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Reforma integral o parcial</div>
+    <h2 class="sec-title">Cuartos<br>de baño</h2>
+    <p class="sec-sub">Transformamos baños completos o cambiamos solo lo que hace falta. Coordinamos a fontanero y alicatador para que tú no tengas que gestionar nada.</p>
 
-    <div class="feat-list">
-      <div class="feat">
-        <div class="feat-num">01</div>
-        <div class="feat-text">
-          <strong>Sin sorpresas en la factura</strong>
-          <span>El presupuesto se firma antes de empezar. Si surge algo, te avisamos antes de actuar.</span>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-num">02</div>
-        <div class="feat-text">
-          <strong>Lo hacemos bien desde la primera vez</strong>
-          <span>Sabemos lo que cuesta una mala reparación. Por eso lo garantizamos dos años por escrito.</span>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-num">03</div>
-        <div class="feat-text">
-          <strong>Llegamos donde otros no llegan</strong>
-          <span>Leganés, Getafe, Alcorcón, Fuenlabrada y Móstoles en menos de una hora.</span>
-        </div>
-      </div>
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Reforma completa desde 1.800 € · Presupuesto sin compromiso
     </div>
 
-    <a href="contacto.html" class="btn btn-ink btn-lg">
-      Pedir presupuesto gratis <svg width="14" height="14" style="color:var(--teal)"><use href="#i-arrow"/></svg>
-    </a>
-  </div>
-</section>
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Sustitución de bañera por plato de ducha</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Cambio de sanitarios: inodoro, lavabo, bidet</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de griferías y accesorios</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Reforma de instalación de agua fría y caliente</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Coordinación con alicatador y escayolista</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Gestión de residuos y limpieza final incluidas</li>
+    </ul>
 
-
-<!-- ═══ TESTIMONIALS ════════════════════════════ -->
-<section class="testimonials" id="opiniones">
-  <div class="testi-header reveal">
-    <div class="sec-label">Lo que dicen los vecinos</div>
-    <h2 class="sec-title" style="margin-top:12px">340 opiniones en Google.<br>Todas reales.</h2>
-  </div>
-
-  <div class="testi-grid">
-    <div class="testi-card reveal d1">
-      <div class="testi-quote">"</div>
-      <div class="testi-stars">
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg>
-      </div>
-      <p class="testi-text">Llamé a las 11 de la noche por una fuga en la cocina. A la hora tenía a los chicos de Ruiz aquí. Repararon todo, limpiaron y me cobraron exactamente lo que dijeron.</p>
-      <div class="testi-author">
-        <div class="ta-av">MG</div>
-        <div>
-          <div class="ta-name">María G.</div>
-          <div class="ta-where">Leganés Centro</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card reveal d2">
-      <div class="testi-quote">"</div>
-      <div class="testi-stars">
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg>
-      </div>
-      <p class="testi-text">Llevaba meses con la caldera dando problemas. Dos empresas antes no lo arreglaron. Estos tardaron media hora. Precio muy razonable y me explicaron todo.</p>
-      <div class="testi-author">
-        <div class="ta-av">JL</div>
-        <div>
-          <div class="ta-name">José Luis T.</div>
-          <div class="ta-where">Getafe Norte</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card reveal d3">
-      <div class="testi-quote">"</div>
-      <div class="testi-stars">
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg><svg width="14" height="14"><use href="#i-star"/></svg>
-        <svg width="14" height="14"><use href="#i-star"/></svg>
-      </div>
-      <p class="testi-text">Reforma del baño completa en cuatro días. Coordinaron todo: fontanería, alicatado, sanitarios. El resultado es espectacular. Los recomiendo sin dudarlo.</p>
-      <div class="testi-author">
-        <div class="ta-av">AC</div>
-        <div>
-          <div class="ta-name">Ana C.</div>
-          <div class="ta-where">Alcorcón</div>
-        </div>
-      </div>
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Solicitar visita gratuita
+      </a>
     </div>
   </div>
 </section>
 
+<div class="svc-divider"></div>
 
-<!-- ═══ PROCESS ══════════════════════════════════ -->
-<section class="process">
-  <div class="process-header reveal">
-    <div class="sec-label">Cómo trabajamos</div>
-    <h2 class="sec-title">Sin sorpresas.</h2>
-    <p class="sec-sub">Un proceso claro de principio a fin.</p>
+<!-- ═══ SERVICIO 4: INSTALACIONES ═══ -->
+<section class="svc-section white-bg" id="instalaciones">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Obra nueva y reforma</div>
+    <h2 class="sec-title">Instalaciones<br>nuevas</h2>
+    <p class="sec-sub">Proyecto, instalación y legalización completa de fontanería en viviendas de obra nueva, rehabilitaciones y locales comerciales. Todo en una misma mano.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Presupuesto detallado por partidas · Sin sorpresas
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Fontanería completa en obra nueva</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Renovación de instalaciones en edificios antiguos</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización ante el Ayuntamiento y distribuidora</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación en locales: bares, restaurantes, clínicas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Coordinación con otros gremios</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Certificados y boletines incluidos</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Consultar proyecto
+      </a>
+    </div>
   </div>
 
-  <div class="steps">
-    <div class="step reveal d1">
-      <div class="step-circle">1</div>
-      <div class="step-title">Contacto inmediato</div>
-      <p class="step-desc">Llámanos, escríbenos por WhatsApp o rellena el formulario. Respondemos en menos de dos horas, siempre.</p>
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, rgba(10,25,41,0.88) 0%, rgba(26,58,92,0.82) 100%), url('img/contadores.webp') center/cover no-repeat;">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Llave en mano
     </div>
-    <div class="step reveal d2">
-      <div class="step-circle">2</div>
-      <div class="step-title">Visita y diagnóstico</div>
-      <p class="step-desc">Un técnico va a tu domicilio, evalúa la avería sin coste y te explica exactamente qué hay que hacer y por qué.</p>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">100%</div><div class="sdv-stat-l">legalizado</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 m</div><div class="sdv-stat-l">garantía</div></div>
     </div>
-    <div class="step reveal d3">
-      <div class="step-circle">3</div>
-      <div class="step-title">Presupuesto firmado</div>
-      <p class="step-desc">Apruebas el precio por escrito antes de empezar. Sin extras. Sin sorpresas. Garantía de dos años incluida.</p>
+    <div class="sdv-price">Presupuesto por partidas</div>
+  </div>
+</section>
+
+<div class="svc-divider"></div>
+
+<!-- ═══ SERVICIO 5: SOLAR ═══ -->
+<section class="svc-section fog-bg" id="solar">
+  <!-- Panel visual (izquierda) -->
+  <div class="sdv-panel reveal d1" style="background: linear-gradient(135deg, rgba(26,92,46,0.85) 0%, rgba(39,174,96,0.77) 100%), url('img/placas.webp') center/cover no-repeat;">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-sun"/></svg>
+      Ayudas disponibles
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">70%</div><div class="sdv-stat-l">ahorro ACS</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">8-10</div><div class="sdv-stat-l">años ROI</div></div>
+    </div>
+    <div class="sdv-price">Desde 2.500 € con ayudas</div>
+  </div>
+
+  <!-- Contenido (derecha) -->
+  <div class="svc-content reveal d2">
+    <div class="sec-label">Ahorro energético</div>
+    <h2 class="sec-title">Energía solar<br>térmica ACS</h2>
+    <p class="sec-sub">Instalamos captadores solares térmicos para producir agua caliente sanitaria. Ahorra hasta un 70 % en tu factura y aprovecha las subvenciones vigentes.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Desde 2.500 € con deducciones IRPF · Subvenciones hasta 60%
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Estudio de viabilidad y cálculo de ahorro personalizado</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Instalación de captadores solares térmicos</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Gestión de subvenciones y ayudas del Plan MOVES</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Deducción IRPF: hasta el 20 % en vivienda habitual</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Legalización y certificado de instalación</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Mantenimiento anual opcional incluido</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Calcular mi ahorro
+      </a>
     </div>
   </div>
 </section>
 
+<div class="svc-divider"></div>
 
-<!-- ═══ CTA ══════════════════════════════════════ -->
+<!-- ═══ SERVICIO 6: COMUNIDADES ═══ -->
+<section class="svc-section white-bg" id="comunidades">
+  <!-- Contenido (izquierda) -->
+  <div class="svc-content reveal d1">
+    <div class="sec-label">Empresas y comunidades</div>
+    <h2 class="sec-title">Comunidades<br>y locales</h2>
+    <p class="sec-sub">Contratos anuales de mantenimiento para comunidades de propietarios, oficinas, locales y naves. Un solo interlocutor, precio cerrado, sin sustos.</p>
+
+    <div class="price-badge">
+      <svg width="14" height="14"><use href="#i-check"/></svg>
+      Contrato anual desde 480 € · Precio cerrado
+    </div>
+
+    <ul class="svc-includes">
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Revisiones periódicas programadas incluidas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Atención preferente ante averías 24 h</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Descuento del 15 % en reparaciones e instalaciones</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Informe técnico anual del estado de la instalación</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Interlocutor único para la administración de fincas</li>
+      <li><div class="li-check"><svg width="10" height="10"><use href="#i-check"/></svg></div>Sin permanencia mínima el primer año</li>
+    </ul>
+
+    <div class="svc-content-btns">
+      <a href="contacto.html" class="btn btn-water btn-lg">
+        <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
+        Solicitar contrato
+      </a>
+    </div>
+  </div>
+
+  <!-- Panel visual (derecha) -->
+  <div class="sdv-panel reveal d2" style="background: linear-gradient(135deg, #1c2833 0%, #2c3e50 55%, #34495e 100%);">
+    <div class="sdv-grid"></div>
+    <svg class="sdv-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
+    <div class="sdv-badge">
+      <svg width="12" height="12"><use href="#i-check"/></svg>
+      Precio cerrado anual
+    </div>
+    <div class="sdv-stat-row">
+      <div class="sdv-stat"><div class="sdv-stat-n">15%</div><div class="sdv-stat-l">dto. reparac.</div></div>
+      <div class="sdv-stat"><div class="sdv-stat-n">24 h</div><div class="sdv-stat-l">prioritario</div></div>
+    </div>
+    <div class="sdv-price">Desde 480 € / año</div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA URGENCIAS ═══ -->
 <section class="cta-sec">
-  <h2>¿Tienes una avería ahora mismo?</h2>
-  <p>Estamos disponibles las 24 horas, también festivos y fines de semana.</p>
+  <h2>¿Tienes una urgencia ahora mismo?</h2>
+  <p>Llámanos directamente. Estamos disponibles las 24 horas, también festivos y fines de semana.</p>
   <div class="cta-btns">
     <a href="tel:+34611223344" class="btn btn-white btn-lg">
-      <svg width="15" height="15" style="color:var(--red)"><use href="#i-phone"/></svg>
+      <svg width="16" height="16" style="color:var(--red)"><use href="#i-phone"/></svg>
       611 22 33 44
     </a>
     <a href="https://wa.me/34611223344" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">
-      <svg width="15" height="15"><use href="#i-whatsapp"/></svg>
-      WhatsApp
+      <svg width="16" height="16"><use href="#i-whatsapp"/></svg>
+      Escribir por WhatsApp
     </a>
     <a href="contacto.html" class="btn btn-outline btn-lg">Presupuesto sin compromiso</a>
   </div>
 </section>
 
 
-<!-- ═══ CONTACT ══════════════════════════════════ -->
-<section class="contact-sec" id="contacto">
-  <div class="reveal">
-    <div class="sec-label">Contacto</div>
-    <h2 class="sec-title" style="margin-top:12px">Cuéntanos qué necesitas</h2>
-    <p class="sec-sub">Rellena el formulario y te llamamos en menos de dos horas.</p>
-  </div>
-
-  <div class="contact-grid">
-    <div class="contact-form-card reveal d1">
-      <div id="formContent">
-        <h3 class="form-title">Solicitar presupuesto</h3>
-        <p class="form-sub">Gratuito, sin compromiso. Respondemos siempre.</p>
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">Nombre</label>
-              <input type="text" id="fname" name="nombre" placeholder="Tu nombre" required>
-            </div>
-            <div class="form-group">
-              <label for="fphone">Teléfono</label>
-              <input type="tel" id="fphone" name="telefono" placeholder="611 22 33 44" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="femail">Email</label>
-            <input type="email" id="femail" name="email" placeholder="tuemail@ejemplo.com">
-          </div>
-          <div class="form-group">
-            <label for="fservice">Tipo de servicio</label>
-            <select id="fservice" name="servicio" required>
-              <option value="" disabled selected>¿Qué necesitas?</option>
-              <option value="urgencia">Avería urgente</option>
-              <option value="calefaccion">Calefacción o ACS</option>
-              <option value="bano">Reforma de baño</option>
-              <option value="instalacion">Instalación nueva</option>
-              <option value="solar">Energía solar</option>
-              <option value="comunidad">Comunidad o local</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="fmsg">Descripción breve</label>
-            <textarea id="fmsg" name="mensaje" placeholder="Cuéntanos qué ha pasado o qué necesitas hacer…"></textarea>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" id="fterms" required>
-            <label for="fterms">He leído y acepto la <a href="#">política de privacidad</a>. Tus datos solo se usarán para gestionar tu solicitud.</label>
-          </div>
-          <button type="submit" class="btn btn-red btn-lg form-submit" id="formBtn">
-            <svg width="15" height="15" style="color:white"><use href="#i-arrow"/></svg>
-            Solicitar presupuesto gratuito
-          </button>
-        </form>
-      </div>
-      <div class="form-success" id="formSuccess">
-        <div class="success-ring"><svg width="24" height="24"><use href="#i-check"/></svg></div>
-        <h3>¡Mensaje recibido!</h3>
-        <p>Te llamamos en menos de dos horas.<br>Si es urgente, llama al <strong>611 22 33 44</strong>.</p>
-      </div>
-    </div>
-
-    <div class="contact-side reveal d2">
-      <div class="map-wrap">
-        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8600%2C40.2900%2C-3.7200%2C40.3750&layer=mapnik&marker=40.3283%2C-3.7938" loading="lazy" title="Zona de servicio" allowfullscreen></iframe>
-      </div>
-      <div class="contact-cards">
-        <a href="tel:+34611223344" class="contact-card">
-          <div class="cc-ic r"><svg width="18" height="18"><use href="#i-phone"/></svg></div>
-          <div>
-            <div class="cc-lbl">Llamar ahora</div>
-            <div class="cc-val">611 22 33 44</div>
-            <div class="cc-sub">Urgencias 24 h · También fines de semana</div>
-          </div>
-        </a>
-        <a href="https://wa.me/34611223344" class="contact-card" target="_blank" rel="noopener">
-          <div class="cc-ic g"><svg width="18" height="18"><use href="#i-whatsapp"/></svg></div>
-          <div>
-            <div class="cc-lbl">WhatsApp</div>
-            <div class="cc-val">Escribir mensaje</div>
-            <div class="cc-sub">Respuesta rápida · Puedes enviar fotos</div>
-          </div>
-        </a>
-        <div class="contact-card" style="cursor:default">
-          <div class="cc-ic t"><svg width="18" height="18"><use href="#i-pin"/></svg></div>
-          <div>
-            <div class="cc-lbl">Zona de servicio</div>
-            <div class="cc-val">Sur de Madrid</div>
-            <div class="cc-sub">Leganés · Getafe · Alcorcón · Fuenlabrada · Móstoles</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ FOOTER ══════════════════════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <a href="index.html" class="footer-logo">
-    <svg width="14" height="14" style="color:var(--teal); opacity:.7"><use href="#i-pipe"/></svg>
+    <svg width="16" height="16" style="color:var(--aqua); opacity:.7"><use href="#i-pipe"/></svg>
     Fontanería<span> Ruiz</span>
   </a>
   <div class="footer-links">
@@ -1231,40 +675,10 @@ footer {
 
 <script>
 const obs = new IntersectionObserver(
-  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }),
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
   { threshold: 0.08 }
 );
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('formBtn');
-  const nombre   = document.getElementById('fname').value.trim();
-  const telefono = document.getElementById('fphone').value.trim();
-  const servicio = document.getElementById('fservice').value;
-  const terms    = document.getElementById('fterms').checked;
-  if (!nombre || !telefono || !servicio || !terms) {
-    [document.getElementById('fname'), document.getElementById('fphone'), document.getElementById('fservice')].forEach(f => {
-      if (!f.value.trim()) {
-        f.style.borderColor = 'var(--red)';
-        f.addEventListener('input', () => f.style.borderColor = '', { once:true });
-      }
-    });
-    if (!terms) {
-      document.getElementById('fterms').style.outline = '2px solid var(--red)';
-      setTimeout(() => document.getElementById('fterms').style.outline = '', 1800);
-    }
-    return;
-  }
-  btn.textContent = 'Enviando…';
-  btn.disabled = true; btn.style.opacity = '0.7';
-  setTimeout(() => {
-    document.getElementById('formContent').style.display = 'none';
-    const s = document.getElementById('formSuccess');
-    s.style.display = 'block';
-    s.style.animation = 'fadeUp .4s ease both';
-  }, 1100);
-});
 </script>
 </body>
 </html>
